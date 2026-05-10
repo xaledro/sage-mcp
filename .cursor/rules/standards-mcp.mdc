@@ -1,0 +1,30 @@
+# Standards MCP Rules for Cursor
+
+## Overview
+Cursor rules for the Standards MCP Server project.
+
+## Context
+- MCP server using @modelcontextprotocol/sdk
+- STDIO transport (stdin/stdout communication)
+- Provides 15 tools for arc42, OWASP, ISO standards
+
+## Commands
+```bash
+npm install     # Install dependencies
+npm run dev     # Run with --watch for development
+npm start       # Run production
+npm test        # Run tests via node --test
+```
+
+## Tool Categories
+- **arc42**: Architecture documentation (12 sections)
+- **OWASP ASVS**: Security requirements (L1/L2/L3 levels)
+- **ISO 42010**: Architecture views (logical, deployment, operational, data, security)
+- **ISO 9241**: Usability checklist (effectiveness, efficiency, satisfaction)
+- **ISO 25010**: Quality model (8 characteristics)
+- **Material Design 3**: Design tokens
+
+## Anti-Patterns
+- ❌ Modifying tool return shapes without updating tests
+- ❌ Adding new standards without updating AGENTS.md
+- ❌ Breaking stdio transport (server must remain stdin/stdout)
