@@ -7,6 +7,10 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { getArc42Section, getArc42Metadata } from './tools/arc42.js';
 import { getOwaspRequirements } from './tools/owasp.js';
+import { getIso42010View, listIso42010Views } from './tools/iso42010.js';
+import { getIso9241Checklist, listIso9241Categories } from './tools/iso9241.js';
+import { getIso25010Model, getIso25010Characteristic, getIso25010SubCharacteristic } from './tools/iso25010.js';
+import { getMaterialTokens } from './tools/material.js';
 
 const server = new Server(
   {
