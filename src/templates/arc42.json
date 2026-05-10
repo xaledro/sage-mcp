@@ -1,0 +1,34 @@
+{
+  "id": "arc42",
+  "name": "arc42",
+  "fullName": "Architecture Documentation",
+  "version": "7.0",
+  "sections": [
+    { "number": 1, "title": "Introduction and Goals", "aliases": ["intro", "goals"] },
+    { "number": 2, "title": "Architecture Constraints", "aliases": ["constraints"] },
+    { "number": 3, "title": "Solution Strategy", "aliases": ["strategy"] },
+    { "number": 4, "title": "Building Block View", "aliases": ["blocks", "structure"] },
+    { "number": 5, "title": "Runtime View", "aliases": ["runtime", "dynamic"] },
+    { "number": 6, "title": "Deployment View", "aliases": ["deployment", "infrastructure"] },
+    { "number": 7, "title": "Concepts and Patterns", "aliases": ["concepts", "cross-cutting"] },
+    { "number": 8, "title": "Architecture Decisions", "aliases": ["decisions", "adr"] },
+    { "number": 9, "title": "Quality Requirements", "aliases": ["quality", "requirements"] },
+    { "number": 10, "title": "Risks and Technical Debt", "aliases": ["risks", "debt"] },
+    { "number": 11, "title": "Glossary", "aliases": ["glossary", "terms"] },
+    { "number": 12, "title": "Appendices", "aliases": ["appendix", "references"] }
+  ],
+  "prompts": {
+    "1": "## Section 1: Introduction and Goals\n\nDocument the purpose of this architecture documentation and define the stakeholders and their concerns. Identify key business goals and quality scenarios for the system.\n\n### Content\n\n- Purpose of this document\n- Stakeholder list (name, role, concern)\n- Key business goals (2-5 maximum)\n- Quality scenarios\n- Acceptance criteria",
+    "2": "## Section 2: Architecture Constraints\n\nDocument all constraints that restrict the software architecture: budget, time, technology choices, team capabilities, and external standards.\n\n### Content\n\n- Technical constraints (languages, frameworks, platforms)\n- Organizational constraints (team size, skills, processes)\n- Convection constraints (deadlines, budgets)\n- External constraints (standards, regulations)\n- Paradigmatic constraints (architectural principles)",
+    "3": "## Section 3: Solution Strategy\n\nDocument the fundamental approach to solve the architecture challenges defined in section 1, constrained by section 2.\n\n### Content\n\n- Key decisions and approaches\n- Technical approach (language, frameworks, patterns)\n- Building block decomposition\n- Quality strategy\n- Relevant architectural patterns",
+    "4": "## Section 4: Building Block View\n\nShow the decomposition of the system into building blocks, the black-box view of each block, and the dependencies between blocks.\n\n### Content\n\n- Overview of top-level decomposition\n- Black-box descriptions of all building blocks\n- Component diagram showing dependencies\n- Responsibility matrix",
+    "5": "## Section 5: Runtime View\n\nDescribe the key interactions and behaviors of important building blocks through scenarios or dynamic diagrams.\n\n### Content\n\n- Key scenarios and use cases\n- Interaction diagrams\n- State diagrams for critical components\n- Sequence diagrams for critical flows",
+    "6": "## Section 6: Deployment View\n\nDescribe the mapping of software building blocks to infrastructure and the deployment options.\n\n### Content\n\n- Infrastructure overview\n- Deployment scenarios\n- Infrastructure dependencies\n- Operability requirements\n- Scaling strategy",
+    "7": "## Section 7: Concepts and Patterns\n\nDocument cross-cutting concepts, patterns, and architectural approaches that span multiple building blocks.\n\n### Content\n\n- Domain-specific concepts\n- Architectural patterns used\n- Design patterns applied\n- Cross-cutting concerns\n- Coding conventions and standards",
+    "8": "## Section 8: Architecture Decisions\n\nDocument all significant architectural decisions, their context, consequences, and the rationale behind them.\n\n### Content\n\n- List of significant decisions\n- Decision context and problem statement\n- Alternatives considered\n- Decision outcome and rationale\n- Consequences (positive and negative)",
+    "9": "## Section 9: Quality Requirements\n\nDocument the quality goals and requirements that the architecture must satisfy.\n\n### Content\n\n- Quality tree with scenarios\n- Quality goals\n- Scenarios and acceptance criteria\n- Measurement criteria\n- Trade-off decisions",
+    "10": "## Section 10: Risks and Technical Debt\n\nDocument the identified technical risks and technical debt, along with mitigation strategies.\n\n### Content\n\n- Risk list (probability, impact, mitigation)\n- Technical debt catalog\n- Risk assessment summary\n- Monitoring and control strategy",
+    "11": "## Section 11: Glossary\n\nDefine all important terms used in the architecture documentation.\n\n### Content\n\n- Key domain terms\n- Technical terms\n- Abbreviations and acronyms\n- Cross-references to sections",
+    "12": "## Section 12: Appendices\n\nInclude supplementary information that supports the main documentation.\n\n### Content\n\n- List of figures and tables\n- Additional diagrams\n- Sample code\n- Supporting materials\n- References to external documents"
+  }
+}
