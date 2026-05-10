@@ -4,13 +4,13 @@ const iso9241Checklists = {
     description: "The extent to which users can achieve their goals",
     criteria: [
       { id: "E1", text: "Users can complete tasks without errors", weight: "high" },
-      { id: "E2", "Users can achieve their intended outcome", weight: "high" },
-      { id: "E3", "Task completion rate is above 85%", weight: "medium" },
-      { id: "E4", "Users can recover from errors easily", weight: "high" },
-      { id: "E5", "Help is available when needed", weight: "medium" },
-      { id: "E6", "Users understand what actions are available", weight: "high" },
-      { id: "E7", "Users can identify how to perform actions", weight: "high" },
-      { id: "E8", "Results are presented clearly", weight: "medium" }
+      { id: "E2", text: "Users can achieve their intended outcome", weight: "high" },
+      { id: "E3", text: "Task completion rate is above 85%", weight: "medium" },
+      { id: "E4", text: "Users can recover from errors easily", weight: "high" },
+      { id: "E5", text: "Help is available when needed", weight: "medium" },
+      { id: "E6", text: "Users understand what actions are available", weight: "high" },
+      { id: "E7", text: "Users can identify how to perform actions", weight: "high" },
+      { id: "E8", text: "Results are presented clearly", weight: "medium" }
     ]
   },
   efficiency: {
@@ -20,11 +20,11 @@ const iso9241Checklists = {
       { id: "N1", text: "Tasks complete in reasonable time", weight: "high" },
       { id: "N2", text: "Minimum steps required to complete tasks", weight: "high" },
       { id: "N3", text: "No unnecessary effort or repetition", weight: "medium" },
-      { id: "N4", "System responds within 1 second for user actions", weight: "high" },
-      { id: "N5", "Shortcuts available for expert users", weight: "medium" },
-      { id: "N6", "Information is easily accessible", weight: "medium" },
-      { id: "N7", "Drag-and-drop operations work smoothly", weight: "low" },
-      { id: "N8", "Batch operations supported where appropriate", weight: "low" }
+      { id: "N4", text: "System responds within 1 second for user actions", weight: "high" },
+      { id: "N5", text: "Shortcuts available for expert users", weight: "medium" },
+      { id: "N6", text: "Information is easily accessible", weight: "medium" },
+      { id: "N7", text: "Drag-and-drop operations work smoothly", weight: "low" },
+      { id: "N8", text: "Batch operations supported where appropriate", weight: "low" }
     ]
   },
   satisfaction: {

@@ -10,13 +10,18 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "node --test src/**/*.test.js"
+    "test": "node --test test/**/*.test.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
   },
   "peerDependencies": {
     "@base/design-system": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@base/design-system": {
+      "optional": true
+    }
   },
   "keywords": ["mcp", "standards", "arc42", "owasp", "iso", "ai"],
   "author": "xaledro",
