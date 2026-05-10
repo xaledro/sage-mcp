@@ -6,6 +6,7 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import { getArc42Section, getArc42Metadata } from './tools/arc42.js';
+import { getOwaspRequirements } from './tools/owasp.js';
 
 const server = new Server(
   {
