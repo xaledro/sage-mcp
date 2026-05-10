@@ -1,0 +1,24 @@
+{
+  "name": "@xaledro/standards-mcp",
+  "version": "1.0.0",
+  "description": "MCP server exposing software standards (arc42, OWASP, ISO) as tools for AI agents",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "standards-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test src/**/*.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@base/design-system": ">=2.0.0"
+  },
+  "keywords": ["mcp", "standards", "arc42", "owasp", "iso", "ai"],
+  "author": "xaledro",
+  "license": "ISC"
+}
