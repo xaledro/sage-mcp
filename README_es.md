@@ -1,6 +1,6 @@
 # Standards MCP
 
-[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/GESTAMINERIA/standards-mcp)
+[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/xaledro/standards-mcp)
 [![license](https://img.shields.io/badge/license-ISC-green)](./LICENSE)
 
 Servidor MCP que expone estándares del ciclo de vida del software como herramientas para agentes IA.
@@ -42,6 +42,36 @@ pnpm add @xaledro/standards-mcp
 
 ## Configuración por Agente IA
 
+### OpenCode
+
+Agregar a tu `opencode.json` (raíz del proyecto o global `~/.config/opencode/opencode.json`):
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "standards": {
+      "type": "local",
+      "command": ["npx", "-y", "@xaledro/standards-mcp@latest"],
+      "enabled": true,
+      "environment": {
+        "PROJECT_PATH": "${workspaceFolder}/ai"
+      }
+    }
+  }
+}
+```
+
+**Ubicaciones de config (precedencia):**
+1. Proyecto: `opencode.json` en raíz del proyecto
+2. Global: `~/.config/opencode/opencode.json`
+3. Custom: variable env `$OPENCODE_CONFIG`
+
+**Usando con OpenCode:**
+- Después de agregar la config, reinicia OpenCode o ejecuta `/init` para recargar herramientas MCP
+- Las herramientas aparecen automáticamente junto con las herramientas integradas
+- Pregunta a OpenCode: "use the standards tool to generate arc42 documentation for section 3"
+
 ### Claude Code
 
 Agregar a `.mcp.json` en la raíz del proyecto:
@@ -82,24 +112,6 @@ Agregar a `settings.json`:
       },
       "env": {
         "PROJECT_PATH": "ai"
-      }
-    }
-  }
-}
-```
-
-### OpenCode
-
-Agregar a tu config de OpenCode:
-
-```json
-{
-  "mcpServers": {
-    "standards": {
-      "command": "npx",
-      "args": ["-y", "@xaledro/standards-mcp@latest"],
-      "env": {
-        "PROJECT_PATH": "${workspaceFolder}/ai"
       }
     }
   }
@@ -154,14 +166,31 @@ npx @xaledro/standards-mcp
 | `project.init` | Inicializar estructura del proyecto con carpeta ai/ |
 | `report.gap` | Generar reporte de análisis de brechas |
 
-### Ejemplo: Generar Documentación arc42
+### Ejemplo: Generar Documentación arc42 con OpenCode
 
 ```
-1. Llamar `standards.list` para ver estándares disponibles
-2. Llamar `standards.activate` con { "standard": "arc42", "config": {...} }
-3. Llamar `arc42.section` para cada sección que necesites (1-12)
-4. Llamar `generate` para crear el documento completo
-5. Llamar `markGenerated` cuando esté listo
+1. Pregunta a OpenCode: "use the standards tool to list available standards"
+2. Pregunta a OpenCode: "activate arc42 standard with sections 1, 2, 3, 4"
+3. Pregunta a OpenCode: "use arc42.section to get template for section 1 (Overview)"
+4. Pregunta a OpenCode: "generate the complete arc42 document using the templates"
+5. Pregunta a OpenCode: "mark the document as generated when complete"
+```
+
+### Flujos de Trabajo con OpenCode
+
+**Audit del sistema de diseño:**
+```
+use the audit.run tool to scan ./src/styles for hardcoded design tokens
+```
+
+**Discovery de proyecto:**
+```
+use discovery.run on ./external-app --stacks react,tailwind
+```
+
+**Análisis de brechas:**
+```
+use report.gap to compare discovered tokens against base-design-system
 ```
 
 ## Integración con @base/design-system
@@ -182,7 +211,7 @@ Esto habilita:
 
 ```bash
 # Clonar y setup
-git clone https://github.com/GESTAMINERIA/standards-mcp.git
+git clone https://github.com/xaledro/standards-mcp.git
 cd standards-mcp
 pnpm install
 

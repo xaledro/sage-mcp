@@ -1,6 +1,6 @@
 # Standards MCP
 
-[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/GESTAMINERIA/standards-mcp)
+[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/xaledro/standards-mcp)
 [![license](https://img.shields.io/badge/license-ISC-green)](./LICENSE)
 
 MCP server exposing software lifecycle standards as tools for AI agents.
@@ -42,6 +42,36 @@ pnpm add @xaledro/standards-mcp
 
 ## Configuration by AI Agent
 
+### OpenCode
+
+Add to your `opencode.json` (project root or global `~/.config/opencode/opencode.json`):
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "standards": {
+      "type": "local",
+      "command": ["npx", "-y", "@xaledro/standards-mcp@latest"],
+      "enabled": true,
+      "environment": {
+        "PROJECT_PATH": "${workspaceFolder}/ai"
+      }
+    }
+  }
+}
+```
+
+**Config locations (precedence):**
+1. Project: `opencode.json` in project root
+2. Global: `~/.config/opencode/opencode.json`
+3. Custom: `$OPENCODE_CONFIG` env var
+
+**Using with OpenCode:**
+- After adding the config, restart OpenCode or run `/init` to reload MCP tools
+- Tools appear automatically alongside built-in tools
+- Ask OpenCode: "use the standards tool to generate arc42 documentation for section 3"
+
 ### Claude Code
 
 Add to `.mcp.json` in your project root:
@@ -82,24 +112,6 @@ Add to `settings.json`:
       },
       "env": {
         "PROJECT_PATH": "ai"
-      }
-    }
-  }
-}
-```
-
-### OpenCode
-
-Add to your OpenCode config:
-
-```json
-{
-  "mcpServers": {
-    "standards": {
-      "command": "npx",
-      "args": ["-y", "@xaledro/standards-mcp@latest"],
-      "env": {
-        "PROJECT_PATH": "${workspaceFolder}/ai"
       }
     }
   }
@@ -154,14 +166,31 @@ npx @xaledro/standards-mcp
 | `project.init` | Initialize project structure with ai/ folder |
 | `report.gap` | Generate gap analysis report |
 
-### Example: Generate arc42 Documentation
+### Example: Generate arc42 Documentation with OpenCode
 
 ```
-1. Call `standards.list` to see available standards
-2. Call `standards.activate` with { "standard": "arc42", "config": {...} }
-3. Call `arc42.section` for each section you need (1-12)
-4. Call `generate` to create the complete document
-5. Call `markGenerated` when done
+1. Ask OpenCode: "use the standards tool to list available standards"
+2. Ask OpenCode: "activate arc42 standard with sections 1, 2, 3, 4"
+3. Ask OpenCode: "use arc42.section to get template for section 1 (Overview)"
+4. Ask OpenCode: "generate the complete arc42 document using the templates"
+5. Ask OpenCode: "mark the document as generated when complete"
+```
+
+### OpenCode Workflows
+
+**Design system audit:**
+```
+use the audit.run tool to scan ./src/styles for hardcoded design tokens
+```
+
+**Project discovery:**
+```
+use discovery.run on ./external-app --stacks react,tailwind
+```
+
+**Gap analysis:**
+```
+use report.gap to compare discovered tokens against base-design-system
 ```
 
 ## Integration with @base/design-system
@@ -182,7 +211,7 @@ This enables:
 
 ```bash
 # Clone and setup
-git clone https://github.com/GESTAMINERIA/standards-mcp.git
+git clone https://github.com/xaledro/standards-mcp.git
 cd standards-mcp
 pnpm install
 
