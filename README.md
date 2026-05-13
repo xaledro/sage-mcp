@@ -1,21 +1,24 @@
 # Standards MCP
 
+[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/GESTAMINERIA/standards-mcp)
+[![license](https://img.shields.io/badge/license-ISC-green)](./LICENSE)
+
 MCP server exposing software lifecycle standards as tools for AI agents.
 
 ## What is this?
 
-An MCP server (stdio transport) that provides **15 tools** for generating and managing software documentation according to international standards. Works with any MCP-compatible AI agent (Claude Code, Cursor, Zed, OpenCode, etc.).
+An MCP server (stdio transport) that provides **22 tools** for generating and managing software documentation according to international standards. Works with any MCP-compatible AI agent (Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.).
 
 ## Standards Supported
 
-| Standard | Description | Tool |
-|----------|-------------|------|
+| Standard | Description | Tools |
+|----------|-------------|-------|
 | **arc42** | Architecture documentation (12 sections) | `arc42.section`, `arc42.template` |
 | **OWASP ASVS** | Application security verification (L1/L2/L3) | `owasp.requirements` |
 | **ISO 29110** | Software lifecycle profiles | `iso29110.artefact` |
-| **ISO 42010** | Architecture views (logical, deployment, operational, data, security) | `iso42010.view` |
-| **ISO 9241** | Usability checklist (effectiveness, efficiency, satisfaction) | `iso9241.usabilityCheck` |
-| **ISO 25010** | Quality model (8 characteristics) | `iso25010.qualityModel` |
+| **ISO 42010** | Architecture views | `iso42010.view` |
+| **ISO 9241** | Usability checklist | `iso9241.usabilityCheck` |
+| **ISO 25010** | Quality model | `iso25010.qualityModel` |
 | **Material Design 3** | Design tokens | `material.tokens` |
 
 ## Requirements
@@ -85,16 +88,41 @@ Add to `settings.json`:
 }
 ```
 
-### OpenCode / Generic MCP client
+### OpenCode
+
+Add to your OpenCode config:
+
+```json
+{
+  "mcpServers": {
+    "standards": {
+      "command": "npx",
+      "args": ["-y", "@xaledro/standards-mcp@latest"],
+      "env": {
+        "PROJECT_PATH": "${workspaceFolder}/ai"
+      }
+    }
+  }
+}
+```
+
+### Windsurf
+
+Add via Windsurf Settings → MCP Servers:
+- Name: `standards`
+- Command: `npx -y @xaledro/standards-mcp`
+- Env: `PROJECT_PATH` = path to `ai/` directory
+
+### Generic MCP client (stdio)
 
 ```bash
 npx @xaledro/standards-mcp
 # Communicates via stdin/stdout, JSON-RPC 2.0
 ```
 
-## Usage
+## Available Tools
 
-### Available Tools
+### Standards Documentation (15 tools)
 
 | Tool | Description |
 |------|-------------|
@@ -113,6 +141,18 @@ npx @xaledro/standards-mcp
 | `generate` | Generate multi-standard artefacts |
 | `status` | Get project status |
 | `markGenerated` | Mark artefact complete |
+
+### Discovery & Audit (v1.1.0+) (7 tools)
+
+| Tool | Description |
+|------|-------------|
+| `discovery.run` | Run design system discovery on a project |
+| `discovery.status` | Get status of discovery scan |
+| `discovery.results` | Get discovery results (tokens, components, assets) |
+| `audit.run` | Run design system audit on a project |
+| `audit.results` | Get audit results |
+| `project.init` | Initialize project structure with ai/ folder |
+| `report.gap` | Generate gap analysis report |
 
 ### Example: Generate arc42 Documentation
 
@@ -142,18 +182,18 @@ This enables:
 
 ```bash
 # Clone and setup
-git clone https://github.com/xaledro/standards-mcp.git
+git clone https://github.com/GESTAMINERIA/standards-mcp.git
 cd standards-mcp
-npm install
+pnpm install
 
 # Run in development mode (with --watch)
-npm run dev
+pnpm dev
 
 # Run tests
-npm test
+pnpm test
 
 # Start production
-npm start
+pnpm start
 ```
 
 ## Project Structure
