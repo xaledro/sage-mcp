@@ -11,11 +11,14 @@ import { getIso42010View, listIso42010Views } from './tools/iso42010.js';
 import { getIso9241Checklist, listIso9241Categories } from './tools/iso9241.js';
 import { getIso25010Model, getIso25010Characteristic, getIso25010SubCharacteristic } from './tools/iso25010.js';
 import { getMaterialTokens } from './tools/material.js';
+import { runDiscovery, getDiscoveryStatus, getDiscoveryResults } from './tools/discovery.js';
+import { runAudit, getAuditResults } from './tools/audit.js';
+import { initProjectDir, ensureProjectConfig } from './lib/state.js';
 
 const server = new Server(
   {
     name: 'standards-mcp',
-    version: '1.0.0',
+    version: '1.1.0',
   },
   {
     capabilities: {
@@ -176,6 +179,79 @@ const tools = [
       required: ['artefactId'],
     },
   },
+  {
+    name: 'discovery.run',
+    description: 'Run design system discovery on a project',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+        stacks: { type: 'array', items: { type: 'string' }, description: 'Stacks to scan (react, vue, tailwind, scss, etc.)' },
+        confidenceThreshold: { type: 'number', description: 'Minimum confidence score (0-1)' },
+      },
+    },
+  },
+  {
+    name: 'discovery.status',
+    description: 'Get status of discovery scan',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+      },
+    },
+  },
+  {
+    name: 'discovery.results',
+    description: 'Get discovery results (tokens, components, assets)',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+      },
+    },
+  },
+  {
+    name: 'audit.run',
+    description: 'Run design system audit on a project',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+        baseTokensPath: { type: 'string', description: 'Path to base design system tokens.json' },
+      },
+    },
+  },
+  {
+    name: 'audit.results',
+    description: 'Get audit results',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+      },
+    },
+  },
+  {
+    name: 'project.init',
+    description: 'Initialize project structure with ai/ folder',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+      },
+    },
+  },
+  {
+    name: 'report.gap',
+    description: 'Generate gap analysis report',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectPath: { type: 'string', description: 'Path to project (default: PROJECT_PATH env)' },
+      },
+    },
+  },
 ];
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -232,6 +308,27 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case 'markGenerated':
         return { content: [{ type: 'text', text: JSON.stringify(await markGenerated(args.artefactId), null, 2) }] };
 
+      case 'discovery.run':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleDiscoveryRun(args), null, 2) }] };
+
+      case 'discovery.status':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleDiscoveryStatus(args), null, 2) }] };
+
+      case 'discovery.results':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleDiscoveryResults(args), null, 2) }] };
+
+      case 'audit.run':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleAuditRun(args), null, 2) }] };
+
+      case 'audit.results':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleAuditResults(args), null, 2) }] };
+
+      case 'project.init':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleProjectInit(args), null, 2) }] };
+
+      case 'report.gap':
+        return { content: [{ type: 'text', text: JSON.stringify(await handleGapReport(args), null, 2) }] };
+
       default:
         throw new Error(`Unknown tool: ${name}`);
     }
@@ -281,7 +378,6 @@ async function getIso29110Artefact(id, data) {
       return Interface.getProductState(id);
     }
   } catch {
-    // Fallback to template
   }
 
   return {
@@ -407,7 +503,6 @@ async function getStatus(project) {
       return Interface.generateReport();
     }
   } catch {
-    // Fallback
   }
 
   return {
@@ -426,7 +521,6 @@ async function markGenerated(artefactId) {
       return { artefactId, status: 'marked_complete', product };
     }
   } catch {
-    // Fallback
   }
 
   return {
@@ -434,6 +528,76 @@ async function markGenerated(artefactId) {
     status: 'marked',
     message: 'Marked locally. Connect @base/design-system for persistence.'
   };
+}
+
+async function handleDiscoveryRun(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  return await runDiscovery({
+    projectPath,
+    stacks: args.stacks,
+    confidenceThreshold: args.confidenceThreshold
+  });
+}
+
+async function handleDiscoveryStatus(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  return await getDiscoveryStatus(projectPath);
+}
+
+async function handleDiscoveryResults(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  return await getDiscoveryResults(projectPath);
+}
+
+async function handleAuditRun(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  return await runAudit({
+    projectPath,
+    baseTokensPath: args.baseTokensPath
+  });
+}
+
+async function handleAuditResults(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  return await getAuditResults(projectPath);
+}
+
+async function handleProjectInit(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  await initProjectDir(projectPath);
+  const configResult = await ensureProjectConfig(projectPath);
+  return {
+    success: true,
+    projectPath,
+    projectConfig: configResult
+  };
+}
+
+async function handleGapReport(args) {
+  const projectPath = args.projectPath || process.env.PROJECT_PATH || process.cwd();
+  const gapPath = `${projectPath}/ai/discovered/gap-analysis.json`;
+
+  try {
+    const { readFile } = await import('node:fs/promises');
+    const { existsSync } = await import('node:fs');
+
+    if (existsSync(gapPath)) {
+      const content = await readFile(gapPath, 'utf-8');
+      return JSON.parse(content);
+    }
+
+    return {
+      project: projectPath,
+      status: 'not_found',
+      message: 'No gap analysis found. Run discovery.run first.'
+    };
+  } catch {
+    return {
+      project: projectPath,
+      status: 'error',
+      message: 'Error reading gap analysis'
+    };
+  }
 }
 
 const transport = new StdioServerTransport();

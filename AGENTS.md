@@ -5,11 +5,13 @@
 
 ## What this is
 
-An MCP server (stdio transport) that provides 15 tools for generating and
-managing software documentation according to international standards.
+An MCP server (stdio transport) that provides tools for generating and
+managing software documentation according to international standards,
+plus design system discovery and audit capabilities.
 
-## Available tools
+## Available tools (v1.1.0+)
 
+### Standards Documentation
 | Tool | Description |
 |------|-------------|
 | `standards.list` | List all available standards |
@@ -27,6 +29,17 @@ managing software documentation according to international standards.
 | `generate` | Generate multi-standard artefacts |
 | `status` | Get project status |
 | `markGenerated` | Mark artefact complete |
+
+### Discovery & Audit (v1.1.0+)
+| Tool | Description |
+|------|-------------|
+| `discovery.run` | Run design system discovery on a project |
+| `discovery.status` | Get status of discovery scan |
+| `discovery.results` | Get discovery results (tokens, components, assets) |
+| `audit.run` | Run design system audit on a project |
+| `audit.results` | Get audit results |
+| `project.init` | Initialize project structure with ai/ folder |
+| `report.gap` | Generate gap analysis report |
 
 ## Configuration by agent
 
