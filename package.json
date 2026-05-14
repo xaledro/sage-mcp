@@ -26,5 +26,5 @@
   },
   "keywords": ["mcp", "standards", "arc42", "owasp", "iso", "ai", "discovery", "audit"],
   "author": "xaledro",
-  "license": "ISC"
+  "license": "MIT"
 }

@@ -356,20 +356,6 @@ function activateStandard(name, config) {
   return `Activated ${name} with config: ${JSON.stringify(config || {})}`;
 }
 
-function getOwaspRequirements(level, category) {
-  const baseRequirements = {
-    L1: ['A01: Broken Access Control', 'A02: Cryptographic Failures', 'A03: Injection', 'A04: Insecure Design', 'A05: Security Misconfiguration'],
-    L2: ['A01-A10 all requirements + business logic', 'A06: Vulnerable Components', 'A07: Auth Failures', 'A08: Data Integrity Failures', 'A09: Logging Failures', 'A10: SSRF'],
-    L3: ['All L1+L2 + advanced threat modeling', 'AI/LLM security considerations', 'API security hardening']
-  };
-
-  return {
-    level,
-    category: category || 'all',
-    requirements: baseRequirements[level] || baseRequirements.L1
-  };
-}
-
 async function getIso29110Artefact(id, data) {
   try {
     const Interface = await import('@base/design-system/management').catch(() => null);
@@ -388,73 +374,7 @@ async function getIso29110Artefact(id, data) {
   };
 }
 
-function getIso42010View(view, config) {
-  const views = {
-    logical: { name: 'Logical View', description: 'Shows the structural decomposition of the system', elements: ['Components', 'Interfaces', 'Dependencies'] },
-    deployment: { name: 'Deployment View', description: 'Shows the runtime environment and infrastructure', elements: ['Nodes', 'Components', 'Connections'] },
-    operational: { name: 'Operational View', description: 'Shows how the system operates in its environment', elements: ['Processes', 'Resources', 'Control'] }
-  };
-
-  return {
-    view,
-    config: config || {},
-    ...(views[view] || views.logical)
-  };
-}
-
-function getIso9241Checklist(category) {
-  const categories = {
-    effectiveness: ['Task completion rate', 'Error frequency', 'User goal achievement'],
-    efficiency: ['Time to complete task', 'Steps required', 'Resource consumption'],
-    satisfaction: ['User preference rating', 'Ease of use rating', 'Comfort level']
-  };
-
-  return {
-    category: category || 'all',
-    checklist: category ? categories[category] : Object.values(categories).flat()
-  };
-}
-
-function getIso25010Model() {
-  return {
-    model: 'ISO 25010',
-    qualityCharacteristics: [
-      { name: 'Functional Suitability', subCharacteristics: ['Completeness', 'Correctness', 'Appropriateness'] },
-      { name: 'Performance Efficiency', subCharacteristics: ['Time behavior', 'Resource utilization', 'Capacity'] },
-      { name: 'Compatibility', subCharacteristics: ['Co-existence', 'Interoperability'] },
-      { name: 'Usability', subCharacteristics: ['Recognizability', 'Learnability', 'Operability', 'User error protection', 'User interface aesthetics', 'Accessibility'] },
-      { name: 'Reliability', subCharacteristics: ['Maturity', 'Fault tolerance', 'Recoverability'] },
-      { name: 'Security', subCharacteristics: ['Confidentiality', 'Integrity', 'Non-repudiation', 'Accountability', 'Authenticity'] },
-      { name: 'Maintainability', subCharacteristics: ['Modularity', 'Reusability', 'Analysability', 'Modifiability', 'Testability'] },
-      { name: 'Portability', subCharacteristics: ['Adaptability', 'Installability', 'Replaceability'] }
-    ]
-  };
-}
-
-function getMaterialTokens(version) {
-  return {
-    version: version || 'latest',
-    tokens: {
-      color: {
-        primary: '#6750A4',
-        secondary: '#625B71',
-        tertiary: '#7D5260',
-        error: '#B3261E',
-        surface: '#FFFBFE',
-        onSurface: '#1C1B1F'
-      },
-      typography: {
-        displayLarge: { size: '57px', weight: 400 },
-        headlineLarge: { size: '32px', weight: 400 },
-        titleLarge: { size: '22px', weight: 400 },
-        bodyLarge: { size: '16px', weight: 400 }
-      }
-    },
-    message: 'Material Design 3 tokens. Full token set requires @base/design-system connection.'
-  };
-}
-
-function requestInfo(standard, missing) {
+async function handleListTools() {
   return {
     standard,
     missing,

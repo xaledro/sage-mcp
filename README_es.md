@@ -1,7 +1,7 @@
 # Standards MCP
 
 [![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/xaledro/standards-mcp)
-[![license](https://img.shields.io/badge/license-ISC-green)](./LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 Servidor MCP que expone estándares del ciclo de vida del software como herramientas para agentes IA.
 
@@ -247,4 +247,4 @@ standards-mcp/
 
 ## Licencia
 
-ISC
+MIT
