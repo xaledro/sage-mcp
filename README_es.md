@@ -44,6 +44,8 @@ pnpm add @xaledro/standards-mcp
 
 ### OpenCode
 
+> **Nota:** npm muestra v1.0.0 (15 herramientas). La versión local es v1.1.0 (22 herramientas) — npm desactualizado.
+
 Agregar a tu `opencode.json` (raíz del proyecto o global `~/.config/opencode/opencode.json`):
 
 ```jsonc
@@ -52,7 +54,7 @@ Agregar a tu `opencode.json` (raíz del proyecto o global `~/.config/opencode/op
   "mcp": {
     "standards": {
       "type": "local",
-      "command": ["npx", "-y", "@xaledro/standards-mcp@latest"],
+      "command": ["pnpm", "dlx", "@xaledro/standards-mcp@latest"],
       "enabled": true,
       "environment": {
         "PROJECT_PATH": "${workspaceFolder}/ai"
@@ -134,7 +136,7 @@ npx @xaledro/standards-mcp
 
 ## Herramientas Disponibles
 
-### Documentación de Estándares (15 herramientas)
+### Documentación de Estándares (15 herramientas) — npm v1.0.0
 
 | Herramienta | Descripción |
 |------------|-------------|
@@ -154,7 +156,7 @@ npx @xaledro/standards-mcp
 | `status` | Obtener estado del proyecto |
 | `markGenerated` | Marcar artefacto como completo |
 
-### Discovery y Audit (v1.1.0+) (7 herramientas)
+### Discovery y Audit (v1.1.0+) (7 herramientas) — npm desactualizado
 
 | Herramienta | Descripción |
 |------------|-------------|
