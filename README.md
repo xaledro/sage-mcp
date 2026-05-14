@@ -54,7 +54,7 @@ Add to your `opencode.json` (project root or global `~/.config/opencode/opencode
   "mcp": {
     "standards": {
       "type": "local",
-      "command": ["pnpm", "dlx", "@xaledro/standards-mcp@latest"],
+      "command": ["pnpm", "dlx", "@xaledro/standards-mcp@v1.1.0"],
       "enabled": true,
       "environment": {
         "PROJECT_PATH": "${workspaceFolder}/ai"
@@ -83,7 +83,7 @@ Add to `.mcp.json` in your project root:
   "mcpServers": {
     "standards": {
       "command": "npx",
-      "args": ["-y", "@xaledro/standards-mcp@latest"],
+      "args": ["-y", "@xaledro/standards-mcp@v1.1.0"],
       "env": {
         "PROJECT_PATH": "${workspaceFolder}/ai"
       }
@@ -97,7 +97,7 @@ Add to `.mcp.json` in your project root:
 1. Open Cursor Settings → MCP Servers
 2. Add new server:
    - Name: `standards`
-   - Command: `npx -y @xaledro/standards-mcp`
+- Command: `npx -y @xaledro/standards-mcp@v1.1.0`
    - Environment variables: `PROJECT_PATH` = path to your project's `ai/` directory
 
 ### Zed
@@ -110,7 +110,7 @@ Add to `settings.json`:
     "standards": {
       "command": {
         "path": "npx",
-        "args": ["-y", "@xaledro/standards-mcp"]
+        "args": ["-y", "@xaledro/standards-mcp@v1.1.0"]
       },
       "env": {
         "PROJECT_PATH": "ai"
@@ -124,13 +124,13 @@ Add to `settings.json`:
 
 Add via Windsurf Settings → MCP Servers:
 - Name: `standards`
-- Command: `npx -y @xaledro/standards-mcp`
+- Command: `npx -y @xaledro/standards-mcp@v1.1.0`
 - Env: `PROJECT_PATH` = path to `ai/` directory
 
 ### Generic MCP client (stdio)
 
 ```bash
-npx @xaledro/standards-mcp
+npx @xaledro/standards-mcp@v1.1.0
 # Communicates via stdin/stdout, JSON-RPC 2.0
 ```
 
