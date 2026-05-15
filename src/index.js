@@ -274,7 +274,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       case 'ai.model': {
         const graph = await createGraphDb();
-        const rules = graph.query('SELECT * FROM rules WHERE standard = ?', ['iso42001']);
+        const rules = graph.db.exec('SELECT * FROM rules WHERE standard = ?', ['iso42001']);
         graph.close();
         return { content: [{ type: 'text', text: JSON.stringify({ standard: 'iso42001', rules }, null, 2) }] };
       }
@@ -301,7 +301,7 @@ async function initializeGraph() {
   }
 }
 
-initializeGraph().catch(console.error);
-
 const transport = new StdioServerTransport();
-await server.connect(transport);
+server.connect(transport).then(() => {
+  initializeGraph().catch(console.error);
+});
