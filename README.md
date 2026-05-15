@@ -1,36 +1,47 @@
 # Standards MCP
 
-[![latest](https://img.shields.io/badge/latest-v1.1.0-blue)](https://github.com/xaledro/standards-mcp)
+[![latest](https://img.shields.io/badge/latest-v2.0.0-blue)](https://github.com/xaledro/standards-mcp)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 MCP server exposing software lifecycle standards as tools for AI agents.
 
 ## What is this?
 
-An MCP server (stdio transport) that provides **22 tools** for generating and managing software documentation according to international standards. Works with any MCP-compatible AI agent (Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.).
+An MCP server (stdio transport) that provides **34 tools** for generating and managing software documentation according to international standards. Works with any MCP-compatible AI agent (Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.).
 
 ## Standards Supported
 
 | Standard | Description | Tools |
 |----------|-------------|-------|
-| **arc42** | Architecture documentation (12 sections) | `arc42.section`, `arc42.template` |
-| **OWASP ASVS** | Application security verification (L1/L2/L3) | `owasp.requirements` |
-| **ISO 29110** | Software lifecycle profiles | `iso29110.artefact` |
-| **ISO 42010** | Architecture views | `iso42010.view` |
-| **ISO 9241** | Usability checklist | `iso9241.usabilityCheck` |
-| **ISO 25010** | Quality model | `iso25010.qualityModel` |
+| **arc42** | Architecture documentation (12 sections) | `arc42.section`, `arc42.template`, `arc42.checklist` |
+| **OWASP ASVS** | Application security verification (L1/L2/L3) | `owasp.requirements`, `owasp.verify` |
+| **ISO 29110** | Software lifecycle profiles | `iso29110.artefact`, `iso29110.phases`, `iso29110.products` |
+| **ISO 42010** | Architecture views | `iso42010.view`, `iso42010.views` |
+| **ISO 9241** | Usability checklist | `iso9241.usabilityCheck`, `iso9241.categories` |
+| **ISO 25010** | Quality model | `iso25010.qualityModel`, `iso25010.characteristic` |
+| **ISO 27701** | Privacy (PII processing) | `iso27701.privacyCheck`, `iso27701.pia`, `iso27701.dpia` |
+| **ISO 27001** | Information Security (ISMS) | `iso27001.controls`, `iso27001.soa`, `iso27001.isms` |
+| **ISO 20000** | IT Service Management | `iso20000.sla`, `iso20000.service`, `iso20000.process` |
+| **ISO 42001** | AI Management | `iso42001.ethicalAI`, `iso42001.transparency`, `iso42001.accountability` |
 | **Material Design 3** | Design tokens | `material.tokens` |
 
 ## Requirements
 
 - **Node.js >= 18**
-- Optional: `@base/design-system@>=2.0.0` as peer dependency (for ISO 29110 state tracking)
+- No external dependencies — fully self-contained (v2.0.0)
 
 ## Installation
 
 ### Global (CLI usage)
 ```bash
 npm install -g @xaledro/standards-mcp
+# or
+pnpm add -g @xaledro/standards-mcp
+```
+
+### Via git URL (recommended for latest features)
+```bash
+npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0
 ```
 
 ### As project dependency
@@ -44,7 +55,7 @@ pnpm add @xaledro/standards-mcp
 
 ### OpenCode
 
-> **Nota:** npm muestra v1.0.0 (15 herramientas). La versión local es v1.1.0 (22 herramientas) — npm desactualizado.
+> **Nota:** npm muestra v1.0.0 (15 herramientas). La versión local es v2.0.0 (22 herramientas) — npm desactualizado.
 
 Add to your `opencode.json` (project root or global `~/.config/opencode/opencode.json`):
 
@@ -54,7 +65,7 @@ Add to your `opencode.json` (project root or global `~/.config/opencode/opencode
   "mcp": {
     "standards": {
       "type": "local",
-      "command": ["pnpm", "dlx", "git+https://github.com/xaledro/standards-mcp.git#v1.1.0"],
+      "command": ["pnpm", "dlx", "git+https://github.com/xaledro/standards-mcp.git#v2.0.0"],
       "enabled": true,
       "environment": {
         "PROJECT_PATH": "${workspaceFolder}/ai"
@@ -83,7 +94,7 @@ Add to `.mcp.json` in your project root:
   "mcpServers": {
     "standards": {
       "command": "npx",
-      "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v1.1.0"],
+      "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v2.0.0"],
       "env": {
         "PROJECT_PATH": "${workspaceFolder}/ai"
       }
@@ -97,7 +108,7 @@ Add to `.mcp.json` in your project root:
 1. Open Cursor Settings → MCP Servers
 2. Add new server:
    - Name: `standards`
-- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v1.1.0`
+- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0`
    - Environment variables: `PROJECT_PATH` = path to your project's `ai/` directory
 
 ### Zed
@@ -110,7 +121,7 @@ Add to `settings.json`:
     "standards": {
       "command": {
         "path": "npx",
-        "args": ["-y", "@xaledro/standards-mcp@v1.1.0"]
+        "args": ["-y", "@xaledro/standards-mcp@v2.0.0"]
       },
       "env": {
         "PROJECT_PATH": "ai"
@@ -124,13 +135,13 @@ Add to `settings.json`:
 
 Add via Windsurf Settings → MCP Servers:
 - Name: `standards`
-- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v1.1.0`
+- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0`
 - Env: `PROJECT_PATH` = path to `ai/` directory
 
 ### Generic MCP client (stdio)
 
 ```bash
-npx git+https://github.com/xaledro/standards-mcp.git#v1.1.0
+npx git+https://github.com/xaledro/standards-mcp.git#v2.0.0
 # Communicates via stdin/stdout, JSON-RPC 2.0
 ```
 
@@ -156,7 +167,7 @@ npx git+https://github.com/xaledro/standards-mcp.git#v1.1.0
 | `status` | Get project status |
 | `markGenerated` | Mark artefact complete |
 
-### Discovery & Audit (v1.1.0+) (7 tools) — npm desactualizado
+### Discovery & Audit (v2.0.0+) (7 tools) — npm desactualizado
 
 | Tool | Description |
 |------|-------------|
