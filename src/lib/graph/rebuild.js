@@ -22,7 +22,7 @@ async function indexAll() {
     graph.close();
 
     const rulesResult = await rebuildGraph(standardsDir, dbPath);
-    console.log(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
+    console.error(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
 
     const graph2 = await createGraphDb(dbPath);
     const files = discoverRuleFiles(standardsDir);
@@ -33,11 +33,11 @@ async function indexAll() {
     }
 
     const relResult = await rebuildRelations(relationsDir, graph2, existingRules);
-    console.log(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
+    console.error(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
     graph2.close();
   } else {
     const rulesResult = await indexRules(standardsDir, dbPath);
-    console.log(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
+    console.error(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
 
     const graph = await createGraphDb(dbPath);
     const files = discoverRuleFiles(standardsDir);
@@ -48,7 +48,7 @@ async function indexAll() {
     }
 
     const relResult = await indexRelations(graph, relationsDir, existingRules);
-    console.log(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
+    console.error(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
     graph.close();
   }
 }
@@ -65,10 +65,10 @@ async function main() {
 
     if (force) {
       const relResult = await rebuildRelations(relationsDir, graph, existingRules);
-      console.log(`Relations rebuilt: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
+      console.error(`Relations rebuilt: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
     } else {
       const relResult = await indexRelations(graph, relationsDir, existingRules);
-      console.log(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
+      console.error(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
     }
     graph.close();
   } else {

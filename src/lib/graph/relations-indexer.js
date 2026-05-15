@@ -109,7 +109,7 @@ async function indexRelations(graph, relationsDir, existingRules) {
 }
 
 async function rebuildRelations(relationsDir, graph, existingRules) {
-  console.log(`Rebuilding relations from ${relationsDir}...`);
+  console.error(`Rebuilding relations from ${relationsDir}...`);
   graph.db.run('DELETE FROM relations');
 
   return indexRelations(graph, relationsDir, existingRules);

@@ -18,12 +18,12 @@ async function indexRules(standardsDir, dbPath) {
 
   const files = discoverRuleFiles(standardsDir);
   if (files.length === 0) {
-    console.log('No rule files found');
+    console.error('No rule files found');
     return { indexed: 0, errors: 0 };
   }
 
   const currentCount = graph.count();
-  console.log(`Indexing ${files.length} rule files... (current cache: ${currentCount} rules)`);
+  console.error(`Indexing ${files.length} rule files... (current cache: ${currentCount} rules)`);
 
   graph.clearAll();
 
@@ -46,12 +46,12 @@ async function indexRules(standardsDir, dbPath) {
     }
   }
   graph.close();
-  console.log(`Indexed ${indexed} rules with ${errors} errors`);
+  console.error(`Indexed ${indexed} rules with ${errors} errors`);
   return { indexed, errors };
 }
 
 async function rebuildGraph(standardsDir, dbPath) {
-  console.log('Forcing full rebuild of knowledge graph...');
+  console.error('Forcing full rebuild of knowledge graph...');
   const graph = await createGraphDb(dbPath);
   graph.clearAll();
 
