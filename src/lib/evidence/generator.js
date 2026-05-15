@@ -28,6 +28,8 @@ export async function generateEvidence({ ruleId, projectPath }) {
     const timestamp = new Date().toISOString();
     const commitSha = getCommitSha(projectDir);
     
+    const evidencePath = join(evidenceDir, `evidence-${Date.now()}.json`);
+    
     const evidence = {
       id: `evidence-${Date.now()}`,
       ruleId,
@@ -35,7 +37,9 @@ export async function generateEvidence({ ruleId, projectPath }) {
       generatedAt: timestamp,
       commitSha,
       artifacts: [],
-      status: 'generated'
+      status: 'generated',
+      evidencePath,
+      projectPath: projectDir
     };
     
     const evidenceConfig = typeof rule.evidence === 'string' ? JSON.parse(rule.evidence) : (rule.evidence || {});
@@ -332,17 +336,18 @@ function getCommitSha(projectDir) {
 
 function recordEvidence(graph, evidence) {
   try {
+    const metadata = evidence.artifacts ? JSON.stringify({ artifacts: evidence.artifacts }) : '{}';
     graph.db.run(
       `INSERT INTO evidence_records (rule_id, project_path, artifact_path, status, generated_at, commit_sha, metadata)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         evidence.ruleId,
-        evidence.commitSha || 'unknown',
+        evidence.projectPath || 'unknown',
         evidence.evidencePath || '',
-        evidence.status,
-        evidence.generatedAt,
-        evidence.commitSha,
-        JSON.stringify({ artifacts: evidence.artifacts })
+        evidence.status || 'unknown',
+        evidence.generatedAt || new Date().toISOString(),
+        evidence.commitSha || 'unknown',
+        metadata
       ]
     );
   } catch (e) {
