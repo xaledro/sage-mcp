@@ -1,0 +1,53 @@
+{
+  "id": "wcag22.2.2.1",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "operable-a",
+  "title": "2.2.1 - Timing Adjustable",
+  "description": "User can adjust or turn off time limits.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "usability",
+    "timing"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#2-2.1"
+}

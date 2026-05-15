@@ -1,0 +1,56 @@
+{
+  "id": "wcag22.3.3.2",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "understandable-a",
+  "title": "3.3.2 - Labels or Instructions",
+  "description": "Labels are provided for inputs.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "forms",
+    "labels"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "code-coverage"
+    ],
+    "generators": [
+      "axe-core",
+      "eslint-plugin-jsx-a11y"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#3-3.2"
+}

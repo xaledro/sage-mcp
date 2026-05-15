@@ -1,47 +1,98 @@
-# Standards MCP
+# Standards MCP v3.0.0
 
-[![latest](https://img.shields.io/badge/latest-v2.0.0-blue)](https://github.com/xaledro/standards-mcp)
+[![version](https://img.shields.io/badge/version-v3.0.0-blue)](https://github.com/xaledro/standards-mcp)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-MCP server exposing software lifecycle standards as tools for AI agents.
+Semantic governance platform for software lifecycle standards.
 
 ## What is this?
 
-An MCP server (stdio transport) that provides **34 tools** for generating and managing software documentation according to international standards. Works with any MCP-compatible AI agent (Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.).
+MCP server (stdio transport) providing **12 canonical tools** for governance,
+compliance, and design system validation. v3.0 introduces a knowledge graph
+with cross-standard relationships, automated validation engine, and evidence
+generation.
 
-## Standards Supported
+## Core Concepts
 
-| Standard | Description | Tools |
-|----------|-------------|-------|
-| **arc42** | Architecture documentation (12 sections) | `arc42.section`, `arc42.template`, `arc42.checklist` |
-| **OWASP ASVS** | Application security verification (L1/L2/L3) | `owasp.requirements`, `owasp.verify` |
-| **ISO 29110** | Software lifecycle profiles | `iso29110.artefact`, `iso29110.phases`, `iso29110.products` |
-| **ISO 42010** | Architecture views | `iso42010.view`, `iso42010.views` |
-| **ISO 9241** | Usability checklist | `iso9241.usabilityCheck`, `iso9241.categories` |
-| **ISO 25010** | Quality model | `iso25010.qualityModel`, `iso25010.characteristic` |
-| **ISO 27701** | Privacy (PII processing) | `iso27701.privacyCheck`, `iso27701.pia`, `iso27701.dpia` |
-| **ISO 27001** | Information Security (ISMS) | `iso27001.controls`, `iso27001.soa`, `iso27001.isms` |
-| **ISO 20000** | IT Service Management | `iso20000.sla`, `iso20000.service`, `iso20000.process` |
-| **ISO 42001** | AI Management | `iso42001.ethicalAI`, `iso42001.transparency`, `iso42001.accountability` |
-| **Material Design 3** | Design tokens | `material.tokens` |
+### Canonical Rule Model
+Every rule follows a unified schema (`StandardRule`):
+- `id`, `standard`, `version`, `category`
+- `title`, `description`
+- `appliesTo` (frontend/backend/mobile/ai/desktop/infrastructure)
+- `severity` (info/warning/critical)
+- `tags`, `relatedStandards`
+- `implementation`, `validation`, `evidence`, `context`
+
+Rules stored as versionable JSON in `src/standards/**/rules/*.json`.
+
+### Knowledge Graph
+- **692 rules** indexed from 15 standards
+- **259 cross-standard relations**
+- Graph traversal: find related rules, paths, clusters
+- Export to JSON, Mermaid, or DOT format
+
+### Validation Engine
+Automated validators for:
+- Color contrast (WCAG 1.4.3, 1.4.11)
+- WAI-ARIA patterns
+- W3C Design Tokens format
+- Hardcoded secrets detection
+- Code coverage thresholds (ISO 25010)
+
+### Evidence Generation
+- Auditable evidence dossiers per rule
+- Git commit traceability
+- Persisted to `${PROJECT_PATH}/governance/evidence/`
+
+## 12 Canonical Tools
+
+| Tool | Description |
+|------|-------------|
+| `rules.list` | List rules (filter by standard/category/severity) |
+| `rules.get` | Get rule by ID with relationships |
+| `rules.query` | Query by platform/severity/tags/standard |
+| `rules.audit` | Compliance audit summary |
+| `graph.related` | Find related rules |
+| `graph.path` | Find path between two rules |
+| `graph.cluster` | Get connected subgraph |
+| `graph.export` | Export graph (json/mermaid/dot) |
+| `validation.run` | Run validators against project |
+| `validation.report` | Generate validation report |
+| `evidence.generate` | Generate auditable evidence |
+| `context.resolve` | Detect project industry/platform/criticality |
+
+## Standards Coverage
+
+| Domain | Standards | Rules |
+|--------|-----------|-------|
+| **governance** | iso27001, iso27701, iso29110 | 101 |
+| **quality** | iso25010 | 39 |
+| **security** | owasp-asvs | 41 |
+| **operations** | iso20000 | 30 |
+| **ai** | iso42001 | 29 |
+| **architecture** | arc42, iso42010 | 17 |
+| **ux** | iso9241, nielsen | 34 |
+| **design-system** | material3, w3c-tokens, carbon, gov-uk | 178 |
+| **accessibility** | wcag22, wai-aria | 223 |
+| **Total** | **17 standards** | **692 rules** |
 
 ## Requirements
 
 - **Node.js >= 18**
-- No external dependencies — fully self-contained (v2.0.0)
+- No external dependencies
 
 ## Installation
 
-### Global (CLI usage)
+### Global
 ```bash
 npm install -g @xaledro/standards-mcp
 # or
 pnpm add -g @xaledro/standards-mcp
 ```
 
-### Via git URL (recommended for latest features)
+### Via git URL (recommended for latest)
 ```bash
-npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0
+npx -y git+https://github.com/xaledro/standards-mcp.git#v3.0.0
 ```
 
 ### As project dependency
@@ -51,208 +102,151 @@ npm install @xaledro/standards-mcp
 pnpm add @xaledro/standards-mcp
 ```
 
-## Configuration by AI Agent
-
-### OpenCode
-
-> **Nota:** npm muestra v1.0.0 (15 herramientas). La versión local es v2.0.0 (22 herramientas) — npm desactualizado.
-
-Add to your `opencode.json` (project root or global `~/.config/opencode/opencode.json`):
-
-```jsonc
-{
-  "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "standards": {
-      "type": "local",
-      "command": ["pnpm", "dlx", "git+https://github.com/xaledro/standards-mcp.git#v2.0.0"],
-      "enabled": true,
-      "environment": {
-        "PROJECT_PATH": "${workspaceFolder}/ai"
-      }
-    }
-  }
-}
+### Local development
+```bash
+git clone https://github.com/xaledro/standards-mcp.git
+cd standards-mcp
+pnpm install
+node src/index.js
 ```
 
-**Config locations (precedence):**
-1. Project: `opencode.json` in project root
-2. Global: `~/.config/opencode/opencode.json`
-3. Custom: `$OPENCODE_CONFIG` env var
+## Configuration
 
-**Using with OpenCode:**
-- After adding the config, restart OpenCode or run `/init` to reload MCP tools
-- Tools appear automatically alongside built-in tools
-- Ask OpenCode: "use the standards tool to generate arc42 documentation for section 3"
-
-### Claude Code
-
-Add to `.mcp.json` in your project root:
-
+### Claude Code (.mcp.json)
 ```json
 {
   "mcpServers": {
     "standards": {
       "command": "npx",
-      "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v2.0.0"],
-      "env": {
-        "PROJECT_PATH": "${workspaceFolder}/ai"
-      }
+      "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v3.0.0"],
+      "env": { "PROJECT_PATH": "${workspaceFolder}" }
     }
   }
 }
 ```
 
-### Cursor
-
-1. Open Cursor Settings → MCP Servers
-2. Add new server:
-   - Name: `standards`
-- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0`
-   - Environment variables: `PROJECT_PATH` = path to your project's `ai/` directory
-
-### Zed
-
-Add to `settings.json`:
-
-```json
+### OpenCode (opencode.json)
+```jsonc
 {
-  "context_servers": {
+  "mcp": {
     "standards": {
-      "command": {
-        "path": "npx",
-        "args": ["-y", "@xaledro/standards-mcp@v2.0.0"]
-      },
-      "env": {
-        "PROJECT_PATH": "ai"
-      }
+      "type": "local",
+      "command": ["node", "src/index.js"],
+      "cwd": "path/to/standards-mcp"
     }
   }
 }
 ```
 
-### Windsurf
+### Cursor / Zed / Windsurf
+Reference AGENTS.md for detailed configuration per client.
 
-Add via Windsurf Settings → MCP Servers:
-- Name: `standards`
-- Command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v2.0.0`
-- Env: `PROJECT_PATH` = path to `ai/` directory
+## Usage Examples
 
-### Generic MCP client (stdio)
-
-```bash
-npx git+https://github.com/xaledro/standards-mcp.git#v2.0.0
-# Communicates via stdin/stdout, JSON-RPC 2.0
+### List all WCAG rules
+```
+rules.list({ standard: "wcag22", severity: "critical" })
 ```
 
-## Available Tools
-
-### Standards Documentation (15 tools) — npm v1.0.0
-
-| Tool | Description |
-|------|-------------|
-| `standards.list` | List all available standards |
-| `standards.activate` | Activate a standard with configuration |
-| `arc42.section` | Get arc42 template for section 1-12 |
-| `arc42.template` | Get arc42 metadata |
-| `owasp.requirements` | Get ASVS requirements by level (L1/L2/L3) |
-| `iso29110.artefact` | Get ISO 29110 artefact template |
-| `iso42010.view` | Get architecture view (logical/deployment/operational) |
-| `iso9241.usabilityCheck` | Get usability checklist |
-| `iso25010.qualityModel` | Get software quality model |
-| `material.tokens` | Get Material Design 3 tokens |
-| `requestInfo` | Request missing compliance data |
-| `defaults.get` | Get standard defaults |
-| `generate` | Generate multi-standard artefacts |
-| `status` | Get project status |
-| `markGenerated` | Mark artefact complete |
-
-### Discovery & Audit (v2.0.0+) (7 tools) — npm desactualizado
-
-| Tool | Description |
-|------|-------------|
-| `discovery.run` | Run design system discovery on a project |
-| `discovery.status` | Get status of discovery scan |
-| `discovery.results` | Get discovery results (tokens, components, assets) |
-| `audit.run` | Run design system audit on a project |
-| `audit.results` | Get audit results |
-| `project.init` | Initialize project structure with ai/ folder |
-| `report.gap` | Generate gap analysis report |
-
-### Example: Generate arc42 Documentation with OpenCode
-
+### Get rule with relationships
 ```
-1. Ask OpenCode: "use the standards tool to list available standards"
-2. Ask OpenCode: "activate arc42 standard with sections 1, 2, 3, 4"
-3. Ask OpenCode: "use arc42.section to get template for section 1 (Overview)"
-4. Ask OpenCode: "generate the complete arc42 document using the templates"
-5. Ask OpenCode: "mark the document as generated when complete"
+rules.get({ id: "wcag22.1.4.3" })
 ```
 
-### OpenCode Workflows
-
-**Design system audit:**
+### Find related accessibility rules
 ```
-use the audit.run tool to scan ./src/styles for hardcoded design tokens
+graph.related({ ruleId: "material3.accessibility.touch-target", depth: 2 })
 ```
 
-**Project discovery:**
+### Find path between standards
 ```
-use discovery.run on ./external-app --stacks react,tailwind
-```
-
-**Gap analysis:**
-```
-use report.gap to compare discovered tokens against base-design-system
+graph.path({ from: "wcag22.2.4.7", to: "iso25010.usability" })
 ```
 
-## Integration with @base/design-system
-
-The MCP server can connect to `@base/design-system` for ISO 29110 state tracking:
-
-```js
-const Interface = require('@base/design-system/management');
-Interface.configure({ basePath: process.env.PROJECT_PATH });
+### Run validation on project
+```
+validation.run({ standard: "wcag22", projectPath: "/path/to/project" })
 ```
 
-This enables:
-- Product state tracking (products.json)
-- Sprint management (sprints.json, backlog.json)
-- ISO 29110 lifecycle phases
+### Generate evidence
+```
+evidence.generate({ ruleId: "iso27001.a5.1", projectPath: "/path/to/project" })
+```
+
+### Resolve project context
+```
+context.resolve({ projectPath: "/path/to/project" })
+```
 
 ## Development
 
 ```bash
-# Clone and setup
-git clone https://github.com/xaledro/standards-mcp.git
-cd standards-mcp
-pnpm install
-
-# Run in development mode (with --watch)
-pnpm dev
-
 # Run tests
 pnpm test
 
-# Start production
-pnpm start
+# Rebuild knowledge graph
+node src/lib/graph/rebuild.js --force
+
+# Run validation engine standalone
+node -e "import('./src/lib/validation/runner.js').then(m => m.runValidation({standard: 'wcag22', projectPath: '.'}).then(r => console.log(JSON.stringify(r, null, 2))))"
 ```
+
+## Migration from v2.0
+
+v3.0 is a **breaking change** — 41 v2.0 tools replaced by 12 canonical tools.
+
+See `MIGRATION.md` for full tool mapping and examples.
 
 ## Project Structure
 
 ```
 standards-mcp/
 ├── src/
-│   ├── index.js          # Main MCP server entry point
-│   └── tools/
-│       ├── arc42.js      # arc42 template tool
-│       ├── owasp.js      # OWASP ASVS tool
-│       ├── iso42010.js   # ISO 42010 views
-│       ├── iso9241.js    # ISO 9241 usability
-│       ├── iso25010.js   # ISO 25010 quality
-│       └── material.js   # Material Design 3
+│   ├── index.js              # MCP server entry (12 tools)
+│   ├── tools/v3/rules.js     # rules.* tool implementations
+│   ├── lib/
+│   │   ├── rule-model.js     # Canonical rule schema + AJV
+│   │   ├── registry.js       # Rule discovery and loading
+│   │   ├── graph/
+│   │   │   ├── db.js         # SQLite wrapper (sql.js)
+│   │   │   ├── indexer.js    # Rule ingestion
+│   │   │   ├── relations-indexer.js  # Cross-standard relations
+│   │   │   └── schema.sql    # 5-table schema
+│   │   ├── validation/
+│   │   │   ├── runner.js     # Validation orchestrator
+│   │   │   └── validators/   # 5 validators
+│   │   ├── evidence/
+│   │   │   └── generator.js  # Evidence generation
+│   │   └── context-resolver.js  # Project context detection
+│   └── standards/
+│       ├── governance/iso27001/rules/   # 48 rules
+│       ├── governance/iso27701/rules/   # 32 rules
+│       ├── governance/iso29110/rules/   # 21 rules
+│       ├── quality/iso25010/rules/     # 39 rules
+│       ├── security/owasp-asvs/rules/   # 41 rules
+│       ├── operations/iso20000/rules/   # 30 rules
+│       ├── ai/iso42001/rules/           # 29 rules
+│       ├── architecture/arc42/rules/     # 12 rules
+│       ├── architecture/iso42010/rules/  # 5 rules
+│       ├── ux/iso9241/rules/            # 24 rules
+│       ├── ux/nielsen/rules/            # 10 rules
+│       ├── design-system/material3/rules/ # 79 rules
+│       ├── design-system/w3c-tokens/rules/ # 30 rules
+│       ├── design-system/carbon/rules/   # 38 rules
+│       ├── design-system/gov-uk/rules/    # 31 rules
+│       ├── accessibility/wcag22/rules/    # 63 rules
+│       ├── accessibility/wai-aria/rules/  # 160 rules
+│       └── _relations/                    # 259 cross-standard relations
 ├── test/
-│   └── standards.test.js # Unit tests
+│   ├── lib/rule-model.test.js
+│   ├── lib/graph.test.js
+│   ├── lib/graph-relations.test.js
+│   └── tools/rules.test.js
+├── scripts/
+│   ├── migrate-*.js          # Rule generators
+│   └── rebuild.js            # Graph rebuild CLI
+├── AGENTS.md                 # Agent configuration guide
+├── MIGRATION.md              # v2.0 → v3.0 migration
 └── README.md
 ```
 

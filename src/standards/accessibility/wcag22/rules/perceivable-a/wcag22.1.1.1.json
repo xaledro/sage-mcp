@@ -1,0 +1,56 @@
+{
+  "id": "wcag22.1.1.1",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-a",
+  "title": "1.1.1 - Non-text Content",
+  "description": "All non-text content has a text alternative.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "perceivable",
+    "non-text"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "code-coverage"
+    ],
+    "generators": [
+      "axe-core",
+      "eslint-plugin-jsx-a11y"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-1.1"
+}

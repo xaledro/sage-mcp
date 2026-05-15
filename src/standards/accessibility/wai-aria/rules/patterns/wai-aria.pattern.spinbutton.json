@@ -1,0 +1,55 @@
+{
+  "id": "wai-aria.pattern.spinbutton",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "pattern",
+  "title": "Spin Button Pattern",
+  "description": "Numeric input with controls pattern.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22",
+    "material3"
+  ],
+  "tags": [
+    "wai-aria",
+    "pattern",
+    "input"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#aria-practices-spinbutton"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "arc42.s12",
+  "standard": "arc42",
+  "version": "7.0",
+  "category": "architecture-documentation",
+  "title": "Section 12",
+  "description": "Arc42 documentation template section 12",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "arc42",
+    "documentation",
+    "architecture"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "markdown"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://arc42.org/"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "wcag22.3.1.5",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "understandable-aaa",
+  "title": "3.1.5 - Reading Level",
+  "description": "Content reading level can be adjusted.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "readability",
+    "aaa"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#3-1.5"
+}

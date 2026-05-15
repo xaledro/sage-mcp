@@ -1,0 +1,57 @@
+{
+  "id": "material3.component.dialog-alert",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "components",
+  "title": "Alert Dialog",
+  "description": "Simple dialog for urgent messages requiring acknowledgment.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "components"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "carbon.component.date-picker",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "component",
+  "title": "Date Picker",
+  "description": "Date and time picker components.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "carbon",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "component"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

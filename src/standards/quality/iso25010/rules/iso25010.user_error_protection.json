@@ -1,0 +1,44 @@
+{
+  "id": "iso25010.user_error_protection",
+  "standard": "iso25010",
+  "version": "2011",
+  "category": "quality-subcharacteristic",
+  "title": "User Error Protection",
+  "description": "ISO 25010 sub-characteristic: user_error_protection",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "iso25010.usability"
+  ],
+  "tags": [
+    "iso25010",
+    "quality",
+    "subcharacteristic"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "specification"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/35733.html"
+}

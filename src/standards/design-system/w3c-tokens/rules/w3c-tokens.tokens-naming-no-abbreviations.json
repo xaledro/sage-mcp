@@ -1,0 +1,57 @@
+{
+  "id": "w3c-tokens.tokens.naming.no-abbreviations",
+  "standard": "w3c-tokens",
+  "version": "1.0",
+  "category": "design-token-spec",
+  "title": "No Abbreviations",
+  "description": "Token names should not use abbreviations.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "material3",
+    "wcag22"
+  ],
+  "tags": [
+    "w3c-tokens",
+    "naming",
+    "readability"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "technology"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-tokens.github.io/community-group/format/"
+}

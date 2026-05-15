@@ -1,0 +1,57 @@
+{
+  "id": "carbon.dataviz.scatter-plot",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "dataviz",
+  "title": "Scatter Plot",
+  "description": "Scatter plot for correlation analysis.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "iso25010",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "dataviz"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

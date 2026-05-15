@@ -1,0 +1,112 @@
+{
+  "_comment": "Design system cross-relationships: Carbon, GOV.UK, Material 3, W3C tokens",
+  "standard": "design-system",
+  "description": "Relationships between design system standards",
+  "relations": [
+    {
+      "source": "carbon.dataviz.status-indicator",
+      "target": "material3.component.progress-indicator",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Carbon status indicators map to Material progress"
+    },
+    {
+      "source": "carbon.component.button",
+      "target": "material3.component.button",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Button components have common patterns"
+    },
+    {
+      "source": "carbon.pattern.dashboard-layout",
+      "target": "iso25010.usability",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Dashboard layout impacts usability"
+    },
+    {
+      "source": "govuk.accessibility.labels",
+      "target": "wcag22.1.3.1",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "GOV.UK labels extend WCAG info and relationships"
+    },
+    {
+      "source": "govuk.accessibility.focus",
+      "target": "wcag22.2.4.7",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "GOV.UK focus management extends WCAG focus visible"
+    },
+    {
+      "source": "govuk.pattern.check-answers",
+      "target": "nielsen.5.error-prevention",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Check answers pattern prevents errors"
+    },
+    {
+      "source": "govuk.error-summary",
+      "target": "nielsen.9.error-help",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Error summary implements Nielsen error help"
+    },
+    {
+      "source": "material3.tokens.color",
+      "target": "w3c-tokens.tokens.format.color",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Material color tokens extend W3C color format"
+    },
+    {
+      "source": "material3.accessibility.touch-target",
+      "target": "wcag22.2.5.5",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Material touch targets implement WCAG target size"
+    },
+    {
+      "source": "carbon.data-table.batch-actions",
+      "target": "nielsen.3.user-control",
+      "relationType": "IMPLEMENTS",
+      "weight": 0.9,
+      "note": "Batch actions provide user control"
+    },
+    {
+      "source": "govuk.skip-link",
+      "target": "wcag22.2.4.1",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Skip link implements bypass block"
+    },
+    {
+      "source": "material3.motion.easing",
+      "target": "w3c-tokens.tokens.format.cubicBezier",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Material motion extends W3C cubic bezier format"
+    },
+    {
+      "source": "carbon.dataviz.bar-chart",
+      "target": "iso25010.operability",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Bar chart operability maps to ISO 25010"
+    },
+    {
+      "source": "govuk.character-count",
+      "target": "wcag22.3.3.2",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Character count helps labels/instructions"
+    },
+    {
+      "source": "nielsen.4.consistency",
+      "target": "w3c-tokens.tokens.naming.kebab-case",
+      "relationType": "IMPLEMENTS",
+      "weight": 0.8,
+      "note": "Consistent naming implements Nielsen consistency"
+    }
+  ]
+}

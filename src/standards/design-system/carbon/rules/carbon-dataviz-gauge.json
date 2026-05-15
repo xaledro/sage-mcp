@@ -1,0 +1,57 @@
+{
+  "id": "carbon.dataviz.gauge",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "dataviz",
+  "title": "Gauge Chart",
+  "description": "Gauge charts for KPI display.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "iso25010",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "dataviz"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

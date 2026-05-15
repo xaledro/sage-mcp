@@ -1,0 +1,63 @@
+{
+  "id": "nielsen.9.error-help",
+  "standard": "nielsen",
+  "version": "1.0",
+  "category": "heuristic",
+  "title": "Help Users Recognize and Recover from Errors",
+  "description": "Error messages should be expressed in plain language, precisely indicate the problem, and constructively suggest a solution.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true,
+    "desktop": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "iso9241",
+    "iso25010.usability",
+    "wcag22"
+  ],
+  "tags": [
+    "nielsen",
+    "ux",
+    "usability",
+    "heuristics",
+    "heuristic"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "usability-test",
+      "heuristic-evaluation"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "education"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile",
+      "desktop"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+}

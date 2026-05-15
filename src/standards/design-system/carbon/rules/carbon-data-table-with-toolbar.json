@@ -1,0 +1,57 @@
+{
+  "id": "carbon.data-table.with-toolbar",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "data-table",
+  "title": "Data Table with Toolbar",
+  "description": "Data table with integrated toolbar for batch actions and filtering.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "iso25010.usability",
+    "wcag22.1.3.1"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "data-table"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "wcag22.1.4.5",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-aa",
+  "title": "1.4.5 - Images of Text",
+  "description": "Text is not presented as image unless essential.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "typography"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "code-coverage"
+    ],
+    "generators": [
+      "axe-core",
+      "eslint-plugin-jsx-a11y"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-4.5"
+}

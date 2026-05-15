@@ -1,0 +1,41 @@
+{
+  "id": "iso9241.n3",
+  "standard": "iso9241",
+  "version": "11",
+  "category": "usability-criteria",
+  "title": "Efficiency - Criterion N3",
+  "description": "ISO 9241 usability criterion N3 (Efficiency)",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "iso9241",
+    "usability",
+    "ux"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "evaluation"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/35800.html"
+}

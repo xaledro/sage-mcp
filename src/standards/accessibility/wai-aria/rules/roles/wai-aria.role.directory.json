@@ -1,0 +1,56 @@
+{
+  "id": "wai-aria.role.directory",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "role",
+  "title": "Directory Role",
+  "description": "A list of references to members of a group.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "wai-aria",
+    "role",
+    "directory",
+    "list"
+  ],
+  "implementation": {
+    "patterns": [
+      "role=\"directory\""
+    ],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#directory"
+}

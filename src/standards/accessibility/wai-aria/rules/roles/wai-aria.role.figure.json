@@ -1,0 +1,56 @@
+{
+  "id": "wai-aria.role.figure",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "role",
+  "title": "Figure Role",
+  "description": "A graphical document with an optional caption.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "wai-aria",
+    "role",
+    "figure",
+    "content"
+  ],
+  "implementation": {
+    "patterns": [
+      "role=\"figure\""
+    ],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#figure"
+}

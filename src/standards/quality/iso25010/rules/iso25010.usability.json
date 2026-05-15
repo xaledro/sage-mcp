@@ -1,0 +1,42 @@
+{
+  "id": "iso25010.usability",
+  "standard": "iso25010",
+  "version": "2011",
+  "category": "quality-characteristic",
+  "title": "Usability",
+  "description": "ISO 25010 quality characteristic: Usability",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "iso25010",
+    "quality",
+    "characteristic"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "specification"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/35733.html"
+}

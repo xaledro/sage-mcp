@@ -1,0 +1,57 @@
+{
+  "id": "carbon.component.modal",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "component",
+  "title": "Modal",
+  "description": "Modal dialogs for confirmations and forms.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "carbon",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "component"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

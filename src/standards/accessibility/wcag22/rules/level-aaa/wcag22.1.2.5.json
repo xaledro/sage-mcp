@@ -1,0 +1,53 @@
+{
+  "id": "wcag22.1.2.5",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-aaa",
+  "title": "1.2.5 - Audio Description (Prerecorded)",
+  "description": "Audio description for prerecorded video.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "media",
+    "aaa"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-2.5"
+}

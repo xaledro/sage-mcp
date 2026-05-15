@@ -1,0 +1,55 @@
+{
+  "id": "govuk.character-count",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "form",
+  "title": "Character Count",
+  "description": "Text input with character limit indicator.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "govuk",
+    "wcag22"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "form"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

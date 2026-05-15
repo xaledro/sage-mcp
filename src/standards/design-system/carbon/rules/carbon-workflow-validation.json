@@ -1,0 +1,57 @@
+{
+  "id": "carbon.workflow.validation",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "workflow",
+  "title": "Step Validation",
+  "description": "Validation at each workflow step before proceeding.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "carbon",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "workflow"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

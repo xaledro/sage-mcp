@@ -1,0 +1,56 @@
+{
+  "id": "wcag22.1.4.12",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-aa",
+  "title": "1.4.12 - Text Spacing",
+  "description": "Text spacing can be changed without loss of content.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "typography",
+    "spacing"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "code-coverage"
+    ],
+    "generators": [
+      "axe-core",
+      "eslint-plugin-jsx-a11y"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-4.12"
+}

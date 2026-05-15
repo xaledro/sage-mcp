@@ -1,0 +1,43 @@
+{
+  "id": "iso42010.logical",
+  "standard": "iso42010",
+  "version": "2011",
+  "category": "architecture-views",
+  "title": "Logical View",
+  "description": "ISO 42010 architectural view: logical",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true,
+    "infrastructure": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "iso42010",
+    "architecture",
+    "views"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "diagram"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/50509.html"
+}

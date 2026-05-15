@@ -1,0 +1,57 @@
+{
+  "id": "carbon.pattern.form-layout",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "pattern",
+  "title": "Form Layout",
+  "description": "Standard form layout with label alignment.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "carbon",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "pattern"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

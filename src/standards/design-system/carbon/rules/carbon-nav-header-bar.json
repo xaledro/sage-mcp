@@ -1,0 +1,57 @@
+{
+  "id": "carbon.nav.header-bar",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "nav",
+  "title": "Header Bar",
+  "description": "Application header with navigation and actions.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "carbon",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "nav"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

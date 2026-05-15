@@ -1,0 +1,55 @@
+{
+  "id": "govuk.pagination",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "navigation",
+  "title": "Pagination",
+  "description": "Page navigation for lists.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "govuk",
+    "wcag22"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "navigation"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

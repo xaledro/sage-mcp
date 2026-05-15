@@ -1,0 +1,55 @@
+{
+  "id": "govuk.button",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "content",
+  "title": "Button",
+  "description": "Primary, secondary, warning button variants.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "govuk",
+    "wcag22"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "content"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

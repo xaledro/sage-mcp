@@ -1,0 +1,63 @@
+{
+  "id": "material3.accessibility.contrast",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "accessibility",
+  "title": "Color Contrast",
+  "description": "Text and icon contrast ratios must meet WCAG AA (4.5:1 text, 3:1 large text).",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "wcag22",
+    "wai-aria",
+    "material3.accessibility.focus-indicator"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "accessibility"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "visual-inspection"
+    ],
+    "generators": [
+      "storybook-a11y",
+      "axe-devtools"
+    ]
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "material3.accessibility.touch-target",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "accessibility",
+  "title": "Touch Target Size",
+  "description": "Interactive elements must have minimum 48x48dp touch target.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "wcag22",
+    "wai-aria",
+    "material3.accessibility.focus-indicator"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "accessibility"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "visual-inspection"
+    ],
+    "generators": [
+      "storybook-a11y",
+      "axe-devtools"
+    ]
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

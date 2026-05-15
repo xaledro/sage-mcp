@@ -1,0 +1,59 @@
+{
+  "id": "govuk.accessibility.focus",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "a11y",
+  "title": "Focus Management",
+  "description": "Focus moves to error summary on validation failure.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "wcag22",
+    "govuk.accessibility"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "a11y"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "visual-inspection"
+    ],
+    "generators": [
+      "storybook-a11y",
+      "axe-devtools"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "iso27001.a5.10",
+  "standard": "iso27001",
+  "version": "2022",
+  "category": "information-security-control",
+  "title": "A.5.10 - Organizational Controls",
+  "description": "ISO 27001 control A.5.10 (Organizational Controls)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true,
+    "infrastructure": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "iso27001",
+    "security",
+    "isms"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "document",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/27001"
+}

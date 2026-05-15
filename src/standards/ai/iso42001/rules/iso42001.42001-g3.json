@@ -1,0 +1,44 @@
+{
+  "id": "iso42001.42001-g3",
+  "standard": "iso42001",
+  "version": "2023",
+  "category": "ai-management-criteria",
+  "title": "42001-G3 - AI Governance",
+  "description": "ISO 42001 AI management criterion 42001-G3 (AI Governance)",
+  "appliesTo": {
+    "ai": true,
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "iso42001",
+    "ai",
+    "governance"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "document",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/81230.html"
+}

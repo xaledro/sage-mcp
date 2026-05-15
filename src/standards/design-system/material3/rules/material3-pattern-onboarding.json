@@ -1,0 +1,57 @@
+{
+  "id": "material3.pattern.onboarding",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "patterns",
+  "title": "Onboarding Pattern",
+  "description": "Stepped onboarding with progress indicator and skip option.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "patterns"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

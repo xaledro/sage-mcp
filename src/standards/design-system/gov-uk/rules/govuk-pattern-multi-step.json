@@ -1,0 +1,55 @@
+{
+  "id": "govuk.pattern.multi-step",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "pattern",
+  "title": "Multi-Step Form",
+  "description": "Multi-step form with progress indicator.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "govuk",
+    "wcag22"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "pattern"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

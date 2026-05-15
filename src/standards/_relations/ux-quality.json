@@ -1,0 +1,188 @@
+{
+  "_comment": "UX/Usability standards relationships - ISO 9241 and ISO 25010 usability",
+  "standard": "ux",
+  "description": "ISO 9241 usability and ISO 25010 quality model relationships",
+  "relations": [
+    {
+      "source": "iso9241.e1",
+      "target": "iso25010.usability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Effectiveness extends usability"
+    },
+    {
+      "source": "iso9241.e2",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Efficiency extends operability"
+    },
+    {
+      "source": "iso9241.e3",
+      "target": "iso25010.satisfaction",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Satisfaction criterion"
+    },
+    {
+      "source": "iso9241.e4",
+      "target": "iso25010.learnability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Safety extends learnability"
+    },
+    {
+      "source": "iso9241.e5",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Error protection extends accessibility"
+    },
+    {
+      "source": "iso9241.e6",
+      "target": "iso25010.usability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.e7",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Subjective comfort extends operability"
+    },
+    {
+      "source": "iso9241.e8",
+      "target": "iso25010.user_interface_aesthetics",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n1",
+      "target": "iso25010.learnability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "N1 navigability extends learnability"
+    },
+    {
+      "source": "iso9241.n2",
+      "target": "iso25010.recognizability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "N2 recognizability"
+    },
+    {
+      "source": "iso9241.n3",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n4",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n5",
+      "target": "iso25010.learnability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n6",
+      "target": "iso25010.usability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n7",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.n8",
+      "target": "iso25010.satisfaction",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s1",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "S1 suitability for use extends accessibility"
+    },
+    {
+      "source": "iso9241.s2",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s3",
+      "target": "iso25010.usability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s4",
+      "target": "iso25010.learnability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s5",
+      "target": "iso25010.user_error_protection",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s6",
+      "target": "iso25010.satisfaction",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s7",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.s8",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso9241.e7",
+      "target": "material3.tokens.color",
+      "relationType": "MAPS_TO",
+      "weight": 0.7,
+      "note": "Action visibility maps to color tokens"
+    },
+    {
+      "source": "iso9241.e7",
+      "target": "material3.tokens.elevation",
+      "relationType": "MAPS_TO",
+      "weight": 0.6,
+      "note": "Action visibility maps to elevation"
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "material3.interaction.states",
+      "relationType": "IMPLEMENTS",
+      "weight": 0.8,
+      "note": "Usability implemented via Material interaction states"
+    },
+    {
+      "source": "iso25010.accessibility",
+      "target": "material3.accessibility.focus-indicator",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Accessibility via focus states"
+    }
+  ]
+}

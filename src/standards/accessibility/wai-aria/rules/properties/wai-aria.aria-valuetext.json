@@ -1,0 +1,56 @@
+{
+  "id": "wai-aria.aria-valuetext",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "property",
+  "title": "Value Text",
+  "description": "Defines the accessible text for value.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "wai-aria",
+    "property",
+    "slider",
+    "spinbutton"
+  ],
+  "implementation": {
+    "patterns": [
+      "aria-valuetext"
+    ],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#valuetext"
+}

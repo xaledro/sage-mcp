@@ -1,0 +1,61 @@
+{
+  "id": "material3.tokens.typography",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "tokens",
+  "title": "Typography Tokens",
+  "description": "Type scale with display, headline, body, and label styles with MD3 type semantics.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "w3c-tokens"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "tokens"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "visual-inspection"
+    ],
+    "generators": [
+      "storybook-a11y",
+      "axe-devtools"
+    ]
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

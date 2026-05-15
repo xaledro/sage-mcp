@@ -1,0 +1,55 @@
+{
+  "id": "govuk.accessibility.autocomplete-attr",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "a11y",
+  "title": "Autocomplete Attribute",
+  "description": "Use autocomplete attribute for common fields.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22",
+    "govuk.accessibility"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "a11y"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

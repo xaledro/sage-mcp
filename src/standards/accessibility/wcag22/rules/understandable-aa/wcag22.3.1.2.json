@@ -1,0 +1,53 @@
+{
+  "id": "wcag22.3.1.2",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "understandable-aa",
+  "title": "3.1.2 - Language of Parts",
+  "description": "Language of parts is programmatically determinable.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "language",
+    "i18n"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#3-1.2"
+}

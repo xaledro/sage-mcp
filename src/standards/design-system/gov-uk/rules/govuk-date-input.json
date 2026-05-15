@@ -1,0 +1,55 @@
+{
+  "id": "govuk.date-input",
+  "standard": "gov-uk",
+  "version": "4.0",
+  "category": "form",
+  "title": "Date Input",
+  "description": "Date input with day/month/year fields.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "govuk",
+    "wcag22"
+  ],
+  "tags": [
+    "govuk",
+    "design-system",
+    "government",
+    "uk",
+    "form"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "public-sector",
+      "healthcare",
+      "education"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://design-system.service.gov.uk/"
+}

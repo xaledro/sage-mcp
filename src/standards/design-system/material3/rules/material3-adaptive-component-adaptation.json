@@ -1,0 +1,57 @@
+{
+  "id": "material3.adaptive.component-adaptation",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "adaptive",
+  "title": "Component Adaptation",
+  "description": "Components should adapt layout based on window size class.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "adaptive"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

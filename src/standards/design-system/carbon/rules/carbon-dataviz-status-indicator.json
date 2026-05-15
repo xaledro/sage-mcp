@@ -1,0 +1,61 @@
+{
+  "id": "carbon.dataviz.status-indicator",
+  "standard": "carbon",
+  "version": "11.0",
+  "category": "dataviz",
+  "title": "Status Indicator",
+  "description": "Status tiles and indicators for operational dashboards.",
+  "appliesTo": {
+    "frontend": true,
+    "desktop": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "iso25010",
+    "wcag22"
+  ],
+  "tags": [
+    "carbon",
+    "design-system",
+    "ibm",
+    "dataviz"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "visual-inspection"
+    ],
+    "generators": [
+      "storybook-a11y",
+      "axe-devtools"
+    ]
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "manufacturing",
+      "mining",
+      "energy",
+      "logistics"
+    ],
+    "platforms": [
+      "frontend",
+      "desktop"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://carbondesignsystem.com/"
+}

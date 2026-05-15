@@ -1,0 +1,181 @@
+{
+  "_comment": "ISO 20000 service management relationships with ISO 27001 and ISO 29110",
+  "standard": "operations",
+  "description": "ISO 20000 (IT Service Management) relationships with governance and lifecycle standards",
+  "relations": [
+    {
+      "source": "iso20000.csi-1",
+      "target": "iso27001.a5.1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Continual improvement links to organizational controls"
+    },
+    {
+      "source": "iso20000.csi-2",
+      "target": "iso27001.a5.1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.csi-3",
+      "target": "iso27001.a8.9",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Supplier relationships map to third-party access controls"
+    },
+    {
+      "source": "iso20000.csi-4",
+      "target": "iso25010.maintainability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.sd-1",
+      "target": "iso29110.is-001",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Service design extends ISO 29110 initiation"
+    },
+    {
+      "source": "iso20000.sd-2",
+      "target": "iso29110.is-002",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.sd-3",
+      "target": "iso25010.usability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Service design considers usability"
+    },
+    {
+      "source": "iso20000.sd-4",
+      "target": "iso27001.a8.15",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Access control in service design"
+    },
+    {
+      "source": "iso20000.sd-5",
+      "target": "iso25010.security",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.sd-6",
+      "target": "iso20000.sd-1",
+      "relationType": "REQUIRES",
+      "weight": 1.0,
+      "note": "Service transition requirements"
+    },
+    {
+      "source": "iso20000.so-1",
+      "target": "iso29110.gp-003",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Service operation extends lifecycle criteria"
+    },
+    {
+      "source": "iso20000.so-2",
+      "target": "iso27001.a8.1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Asset management during operations"
+    },
+    {
+      "source": "iso20000.so-3",
+      "target": "iso25010.reliability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.so-4",
+      "target": "iso25010.performance_efficiency",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.so-5",
+      "target": "iso27701.27701-1",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "PII handling in operations"
+    },
+    {
+      "source": "iso20000.so-6",
+      "target": "iso20000.sd-1",
+      "relationType": "REQUIRES",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.ss-1",
+      "target": "iso27001.a8.9",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Security in service delivery"
+    },
+    {
+      "source": "iso20000.ss-2",
+      "target": "iso27001.a5.2",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.ss-3",
+      "target": "iso25010.confidentiality",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.ss-4",
+      "target": "iso25010.integrity",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.st-1",
+      "target": "iso27001.a8.15",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Access control during transitions"
+    },
+    {
+      "source": "iso20000.st-2",
+      "target": "iso25010.modifiability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.st-3",
+      "target": "iso25010.recoverability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.st-4",
+      "target": "iso20000.sd-6",
+      "relationType": "REQUIRES",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.st-5",
+      "target": "iso29110.is-006",
+      "relationType": "MAPS_TO",
+      "weight": 0.8
+    },
+    {
+      "source": "iso20000.st-6",
+      "target": "iso20000.st-1",
+      "relationType": "REQUIRES",
+      "weight": 1.0
+    },
+    {
+      "source": "iso20000.st-7",
+      "target": "iso25010.testability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Transitions require testing"
+    }
+  ]
+}

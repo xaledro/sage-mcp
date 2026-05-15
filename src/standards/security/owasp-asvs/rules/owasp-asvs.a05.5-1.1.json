@@ -1,0 +1,44 @@
+{
+  "id": "owasp-asvs.a05.5-1.1",
+  "standard": "owasp-asvs",
+  "version": "2024",
+  "category": "security-requirement",
+  "title": "Security Misconfiguration - 5.1.1",
+  "description": "OWASP ASVS requirement 5.1.1 in category A05 (Security Misconfiguration)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "owasp",
+    "security",
+    "asvs"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false,
+    "validatorId": "secrets"
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://owasp.org/ASVS"
+}

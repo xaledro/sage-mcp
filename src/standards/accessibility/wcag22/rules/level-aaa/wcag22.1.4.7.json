@@ -1,0 +1,53 @@
+{
+  "id": "wcag22.1.4.7",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-aaa",
+  "title": "1.4.7 - Low or No Background Audio",
+  "description": "Audio is at least 20dB below background.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "audio",
+    "aaa"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-4.7"
+}

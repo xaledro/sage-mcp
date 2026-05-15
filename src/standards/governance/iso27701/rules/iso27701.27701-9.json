@@ -1,0 +1,45 @@
+{
+  "id": "iso27701.27701-9",
+  "standard": "iso27701",
+  "version": "2019",
+  "category": "privacy-requirement",
+  "title": "27701-9 - PII Owner Requirements",
+  "description": "ISO 27701 privacy requirement 27701-9 (PII Owner Requirements)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "iso27001.*"
+  ],
+  "tags": [
+    "iso27701",
+    "privacy",
+    "pii"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "document",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/71637.html"
+}

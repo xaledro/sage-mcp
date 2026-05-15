@@ -1,0 +1,191 @@
+{
+  "_comment": "ISO 25010 quality characteristics interrelationships",
+  "relationType": "MAPS_TO",
+  "standard": "quality",
+  "description": "Quality model relationships across functional and non-functional characteristics",
+  "relations": [
+    {
+      "source": "iso25010.functional_suitability",
+      "target": "iso25010.functional_completeness",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Functional suitability includes completeness"
+    },
+    {
+      "source": "iso25010.functional_suitability",
+      "target": "iso25010.functional_correctness",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.functional_suitability",
+      "target": "iso25010.functional_appropriateness",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.performance_efficiency",
+      "target": "iso25010.time_behavior",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.performance_efficiency",
+      "target": "iso25010.resource_utilization",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.performance_efficiency",
+      "target": "iso25010.capacity",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.operability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Usability includes operability"
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.learnability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.recognizability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.user_error_protection",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.user_interface_aesthetics",
+      "relationType": "EXTENDS",
+      "weight": 0.8
+    },
+    {
+      "source": "iso25010.usability",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Usability includes accessibility"
+    },
+    {
+      "source": "iso25010.reliability",
+      "target": "iso25010.maturity",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.reliability",
+      "target": "iso25010.fault_tolerance",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.reliability",
+      "target": "iso25010.recoverability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.confidentiality",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.integrity",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.non_repudiation",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.accountability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.authenticity",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.modularity",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.reusability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.analysability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.modifiability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.testability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.portability",
+      "target": "iso25010.adaptability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.portability",
+      "target": "iso25010.installability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.portability",
+      "target": "iso25010.replaceability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.compatibility",
+      "target": "iso25010.co-existence",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso25010.compatibility",
+      "target": "iso25010.interoperability",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    }
+  ]
+}

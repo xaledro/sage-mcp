@@ -1,0 +1,58 @@
+{
+  "id": "wcag22.2.5.5",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "operable-aa",
+  "title": "2.5.5 - Target Size (Minimum)",
+  "description": "Touch targets are at least 24x24 CSS pixels.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "touch",
+    "mobile"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "code-coverage"
+    ],
+    "generators": [
+      "axe-core",
+      "eslint-plugin-jsx-a11y"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#2-5.5"
+}

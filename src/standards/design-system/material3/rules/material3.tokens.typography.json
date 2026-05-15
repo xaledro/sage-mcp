@@ -1,0 +1,43 @@
+{
+  "id": "material3.tokens.typography",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "design-tokens",
+  "title": "Material 3 Typography Tokens",
+  "description": "Material Design 3 typography token specifications",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "material",
+    "design-system",
+    "tokens",
+    "typography"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true,
+    "validatorId": "tokens"
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "tokens-json"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://m3.material.io/"
+}

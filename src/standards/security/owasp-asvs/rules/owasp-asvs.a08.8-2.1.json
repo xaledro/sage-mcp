@@ -1,0 +1,44 @@
+{
+  "id": "owasp-asvs.a08.8-2.1",
+  "standard": "owasp-asvs",
+  "version": "2024",
+  "category": "security-requirement",
+  "title": "Software and Data Integrity Failures - 8.2.1",
+  "description": "OWASP ASVS requirement 8.2.1 in category A08 (Software and Data Integrity Failures)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "owasp",
+    "security",
+    "asvs"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false,
+    "validatorId": "secrets"
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://owasp.org/ASVS"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "wai-aria.role.article",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "role",
+  "title": "Article Role",
+  "description": "A section of a page that forms an independent part.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "wai-aria",
+    "role",
+    "article",
+    "content"
+  ],
+  "implementation": {
+    "patterns": [
+      "role=\"article\""
+    ],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#article"
+}

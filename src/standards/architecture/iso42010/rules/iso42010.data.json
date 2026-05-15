@@ -1,0 +1,43 @@
+{
+  "id": "iso42010.data",
+  "standard": "iso42010",
+  "version": "2011",
+  "category": "architecture-views",
+  "title": "Data View",
+  "description": "ISO 42010 architectural view: data",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true,
+    "infrastructure": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "iso42010",
+    "architecture",
+    "views"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "diagram"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/50509.html"
+}

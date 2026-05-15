@@ -1,0 +1,57 @@
+{
+  "id": "material3.adaptive.breakpoints",
+  "standard": "material3",
+  "version": "3.0",
+  "category": "adaptive",
+  "title": "Breakpoint System",
+  "description": "Window size breakpoints: compact (0-599dp), medium (600-839dp), expanded (840dp+).",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22"
+  ],
+  "tags": [
+    "material3",
+    "design-system",
+    "m3",
+    "adaptive"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://m3.material.io/"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "iso25010.confidentiality",
+  "standard": "iso25010",
+  "version": "2011",
+  "category": "quality-subcharacteristic",
+  "title": "Confidentiality",
+  "description": "ISO 25010 sub-characteristic: confidentiality",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "iso25010.security"
+  ],
+  "tags": [
+    "iso25010",
+    "quality",
+    "subcharacteristic"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "specification"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/35733.html"
+}

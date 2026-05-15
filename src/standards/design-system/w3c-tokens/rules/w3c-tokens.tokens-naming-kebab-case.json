@@ -1,0 +1,61 @@
+{
+  "id": "w3c-tokens.tokens.naming.kebab-case",
+  "standard": "w3c-tokens",
+  "version": "1.0",
+  "category": "design-token-spec",
+  "title": "Kebab-Case Naming",
+  "description": "Token names must use kebab-case (lowercase with hyphens).",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "material3",
+    "wcag22"
+  ],
+  "tags": [
+    "w3c-tokens",
+    "naming",
+    "convention"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": true
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test-report",
+      "token-coverage"
+    ],
+    "generators": [
+      "style-dictionary",
+      "token-linter"
+    ]
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "technology"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-tokens.github.io/community-group/format/"
+}

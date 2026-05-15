@@ -1,0 +1,62 @@
+{
+  "id": "nielsen.2.system-match",
+  "standard": "nielsen",
+  "version": "1.0",
+  "category": "heuristic",
+  "title": "Match between System and Real World",
+  "description": "The system should speak the users language, with words, phrases and concepts familiar to the user.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true,
+    "desktop": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "iso9241",
+    "iso25010.usability",
+    "wcag22"
+  ],
+  "tags": [
+    "nielsen",
+    "ux",
+    "usability",
+    "heuristics",
+    "heuristic"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "expert-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "technology",
+      "government",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "education"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile",
+      "desktop"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+}

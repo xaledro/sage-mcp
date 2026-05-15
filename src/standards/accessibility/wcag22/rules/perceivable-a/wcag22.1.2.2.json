@@ -1,0 +1,52 @@
+{
+  "id": "wcag22.1.2.2",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "perceivable-a",
+  "title": "1.2.2 - Captions (Prerecorded)",
+  "description": "Captions for prerecorded audio content.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "captions"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#1-2.2"
+}

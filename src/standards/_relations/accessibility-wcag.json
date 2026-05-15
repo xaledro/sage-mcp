@@ -1,0 +1,126 @@
+{
+  "_comment": "WCAG 2.2 relationships with other standards",
+  "standard": "accessibility",
+  "description": "WCAG 2.2 success criteria mapped to other standards",
+  "relations": [
+    {
+      "source": "wcag22.1.1.1",
+      "target": "iso25010.usability",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Non-text content extends usability"
+    },
+    {
+      "source": "wcag22.1.2.2",
+      "target": "iso25010.accessibility",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Captions extend accessibility"
+    },
+    {
+      "source": "wcag22.1.4.3",
+      "target": "material3.tokens.color",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Contrast (Minimum) maps to color tokens"
+    },
+    {
+      "source": "wcag22.1.4.11",
+      "target": "material3.tokens.color",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Non-text contrast maps to color tokens"
+    },
+    {
+      "source": "wcag22.1.3.1",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Info and relationships maps to architecture"
+    },
+    {
+      "source": "wcag22.2.1.1",
+      "target": "material3.accessibility.focus-indicator",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Keyboard accessibility via focus states"
+    },
+    {
+      "source": "wcag22.2.4.7",
+      "target": "material3.accessibility.focus-indicator",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Focus visible maps to Material focus states"
+    },
+    {
+      "source": "wcag22.2.5.5",
+      "target": "material3.accessibility.touch-target",
+      "relationType": "IMPLEMENTS",
+      "weight": 0.9,
+      "note": "Target size maps to touch targets"
+    },
+    {
+      "source": "wcag22.2.4.11",
+      "target": "iso25010.reliability",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Focus not obscured relates to reliability"
+    },
+    {
+      "source": "wcag22.2.4.13",
+      "target": "iso25010.usability",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Focus appearance affects usability"
+    },
+    {
+      "source": "wcag22.3.3.1",
+      "target": "iso9241.e1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Error identification maps to effectiveness"
+    },
+    {
+      "source": "wcag22.3.3.2",
+      "target": "iso9241.e1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Labels or instructions maps to effectiveness"
+    },
+    {
+      "source": "wcag22.4.1.1",
+      "target": "iso25010.security",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Parsing relates to security"
+    },
+    {
+      "source": "wcag22.4.1.2",
+      "target": "iso25010.security",
+      "relationType": "MAPS_TO",
+      "weight": 0.7,
+      "note": "Name, role, value maps to security"
+    },
+    {
+      "source": "wcag22.4.1.3",
+      "target": "iso9241.e7",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Status messages maps to user feedback"
+    },
+    {
+      "source": "wcag22.1.4.10",
+      "target": "iso25010.usability",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Reflow relates to usability"
+    },
+    {
+      "source": "wcag22.2.4.12",
+      "target": "iso25010.reliability",
+      "relationType": "MAPS_TO",
+      "weight": 0.9,
+      "note": "Focus not obscured enhanced"
+    }
+  ]
+}

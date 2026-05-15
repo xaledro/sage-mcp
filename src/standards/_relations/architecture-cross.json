@@ -1,0 +1,164 @@
+{
+  "_comment": "Architecture standards relationships - arc42 and ISO 42010",
+  "standard": "architecture",
+  "description": "arc42 documentation template and ISO 42010 architecture views relationships",
+  "relations": [
+    {
+      "source": "arc42.s1",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Introduction maps to logical view"
+    },
+    {
+      "source": "arc42.s2",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Architecture constraints map to logical view"
+    },
+    {
+      "source": "arc42.s3",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "System overview maps to logical view"
+    },
+    {
+      "source": "arc42.s4",
+      "target": "iso42010.deployment",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Solution strategy maps to deployment view"
+    },
+    {
+      "source": "arc42.s5",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Building block view maps to logical view"
+    },
+    {
+      "source": "arc42.s6",
+      "target": "iso42010.deployment",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Runtime view maps to deployment view"
+    },
+    {
+      "source": "arc42.s7",
+      "target": "iso42010.operational",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Deployment view maps to operational view"
+    },
+    {
+      "source": "arc42.s8",
+      "target": "iso42010.logical",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Cross-cutting concerns maps to logical view"
+    },
+    {
+      "source": "arc42.s9",
+      "target": "iso25010.modularity",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Architecture decisions support modularity"
+    },
+    {
+      "source": "arc42.s10",
+      "target": "iso42010.logical",
+      "relationType": "EXTENDS",
+      "weight": 0.8,
+      "note": "Acceptance criteria extend logical view"
+    },
+    {
+      "source": "arc42.s11",
+      "target": "iso29110.gp-001",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "Generalist entry point criteria"
+    },
+    {
+      "source": "arc42.s12",
+      "target": "iso42010.logical",
+      "relationType": "EXTENDS",
+      "weight": 0.8,
+      "note": "Glossary references logical view elements"
+    },
+    {
+      "source": "iso42010.logical",
+      "target": "iso25010.functional_suitability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Logical view addresses functional suitability"
+    },
+    {
+      "source": "iso42010.logical",
+      "target": "iso25010.modularity",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42010.deployment",
+      "target": "iso25010.performance_efficiency",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Deployment view addresses performance"
+    },
+    {
+      "source": "iso42010.deployment",
+      "target": "iso25010.usability",
+      "relationType": "MAPS_TO",
+      "weight": 0.8
+    },
+    {
+      "source": "iso42010.operational",
+      "target": "iso25010.operability",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Operational view addresses operability"
+    },
+    {
+      "source": "iso42010.operational",
+      "target": "iso20000.so-1",
+      "relationType": "MAPS_TO",
+      "weight": 0.8,
+      "note": "Operations map to service operation"
+    },
+    {
+      "source": "iso42010.data",
+      "target": "iso27701.27701-1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Data architecture addresses PII principles"
+    },
+    {
+      "source": "iso42010.security",
+      "target": "iso27001.a5.1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Security architecture maps to organizational controls"
+    },
+    {
+      "source": "iso42010.security",
+      "target": "iso25010.confidentiality",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42010.security",
+      "target": "iso25010.integrity",
+      "relationType": "MAPS_TO",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42010.security",
+      "target": "owasp-asvs.a01.1-1.1",
+      "relationType": "MAPS_TO",
+      "weight": 1.0,
+      "note": "Security architecture maps to OWASP requirements"
+    }
+  ]
+}

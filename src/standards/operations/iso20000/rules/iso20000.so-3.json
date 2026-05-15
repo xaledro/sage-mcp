@@ -1,0 +1,44 @@
+{
+  "id": "iso20000.so-3",
+  "standard": "iso20000",
+  "version": "2018",
+  "category": "service-management-process",
+  "title": "Request fulfillment",
+  "description": "ISO 20000 process: Request fulfillment",
+  "appliesTo": {
+    "frontend": false,
+    "backend": true,
+    "infrastructure": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "iso20000",
+    "service-management",
+    "operations"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "document",
+      "metrics"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/50628.html"
+}

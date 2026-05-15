@@ -1,0 +1,42 @@
+{
+  "id": "iso29110.is-6",
+  "standard": "iso29110",
+  "version": "2011",
+  "category": "lifecycle-phase",
+  "title": "Acceptance Testing",
+  "description": "ISO 29110 lifecycle phase: Acceptance Testing",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "info",
+  "relatedStandards": [],
+  "tags": [
+    "iso29110",
+    "lifecycle",
+    "governance"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "document"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://www.iso.org/standard/50691.html"
+}

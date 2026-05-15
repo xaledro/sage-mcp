@@ -1,0 +1,302 @@
+{
+  "_comment": "Auto-derived relations based on shared tags and categories",
+  "standard": "auto",
+  "description": "Auto-derived relations for rules sharing tags or categories",
+  "relations": [
+    {
+      "source": "iso27001.a5.2",
+      "target": "iso27001.a5.1",
+      "relationType": "RELATED",
+      "weight": 0.6,
+      "note": "Same control theme"
+    },
+    {
+      "source": "iso27001.a6.1",
+      "target": "iso27001.a5.1",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso27001.a7.1",
+      "target": "iso27001.a7.2",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso27001.a8.1",
+      "target": "iso27001.a8.2",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso27701.27701-2",
+      "target": "iso27701.27701-1",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso27701.27701-3",
+      "target": "iso27701.27701-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-001",
+      "target": "iso29110.gp-001",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-002",
+      "target": "iso29110.is-001",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-003",
+      "target": "iso29110.is-002",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-004",
+      "target": "iso29110.is-003",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-005",
+      "target": "iso29110.is-004",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso29110.is-006",
+      "target": "iso29110.is-005",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.sd-1",
+      "target": "iso20000.sd-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.sd-3",
+      "target": "iso20000.sd-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.so-1",
+      "target": "iso20000.so-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.so-3",
+      "target": "iso20000.so-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.so-4",
+      "target": "iso20000.so-3",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.so-5",
+      "target": "iso20000.so-4",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.st-1",
+      "target": "iso20000.st-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.st-2",
+      "target": "iso20000.st-3",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.csi-1",
+      "target": "iso20000.csi-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso20000.csi-3",
+      "target": "iso20000.csi-2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso25010.functional_suitability",
+      "target": "iso25010.functional_completeness",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.functional_completeness",
+      "target": "iso25010.functional_correctness",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.performance_efficiency",
+      "target": "iso25010.time_behavior",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.reliability",
+      "target": "iso25010.maturity",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.security",
+      "target": "iso25010.confidentiality",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.maintainability",
+      "target": "iso25010.modularity",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso25010.portability",
+      "target": "iso25010.adaptability",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "iso42001.42001-a1",
+      "target": "iso42001.42001-a2",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso42001.42001-a2",
+      "target": "iso42001.42001-a3",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso42001.42001-t1",
+      "target": "iso42001.42001-t2",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso42001.42001-r1",
+      "target": "iso42001.42001-a1",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso42001.42001-g1",
+      "target": "iso42001.42001-g2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "owasp-asvs.a01.1-1.1",
+      "target": "owasp-asvs.a01.1-2.1",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "owasp-asvs.a02.2-1.1",
+      "target": "owasp-asvs.a02.2-2.1",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "owasp-asvs.a03.3-1.1",
+      "target": "owasp-asvs.a03.3-2.1",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso9241.e1",
+      "target": "iso9241.e2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso9241.n1",
+      "target": "iso9241.n2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso9241.s1",
+      "target": "iso9241.s2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "arc42.s1",
+      "target": "arc42.s2",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "arc42.s2",
+      "target": "arc42.s3",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "arc42.s4",
+      "target": "arc42.s5",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "arc42.s5",
+      "target": "arc42.s6",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "iso42010.logical",
+      "target": "iso42010.data",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "iso42010.deployment",
+      "target": "iso42010.operational",
+      "relationType": "RELATED",
+      "weight": 0.6
+    },
+    {
+      "source": "material3.tokens.color",
+      "target": "material3.tokens.elevation",
+      "relationType": "RELATED",
+      "weight": 0.7
+    },
+    {
+      "source": "material3.tokens.typography",
+      "target": "material3.tokens.color",
+      "relationType": "RELATED",
+      "weight": 0.5
+    },
+    {
+      "source": "material3.tokens.spacing",
+      "target": "material3.tokens.shape",
+      "relationType": "RELATED",
+      "weight": 0.5
+    }
+  ]
+}

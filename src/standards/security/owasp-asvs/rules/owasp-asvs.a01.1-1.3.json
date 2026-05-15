@@ -1,0 +1,44 @@
+{
+  "id": "owasp-asvs.a01.1-1.3",
+  "standard": "owasp-asvs",
+  "version": "2024",
+  "category": "security-requirement",
+  "title": "Broken Access Control - 1.1.3",
+  "description": "OWASP ASVS requirement 1.1.3 in category A01 (Broken Access Control)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "owasp",
+    "security",
+    "asvs"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false,
+    "validatorId": "secrets"
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://owasp.org/ASVS"
+}

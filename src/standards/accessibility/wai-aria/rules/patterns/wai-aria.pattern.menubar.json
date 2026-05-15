@@ -1,0 +1,55 @@
+{
+  "id": "wai-aria.pattern.menubar",
+  "standard": "wai-aria",
+  "version": "1.2",
+  "category": "pattern",
+  "title": "Menu Bar Pattern",
+  "description": "Menu bar pattern.",
+  "appliesTo": {
+    "frontend": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "wcag22",
+    "material3"
+  ],
+  "tags": [
+    "wai-aria",
+    "pattern",
+    "menu"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/wai-aria-1.2/#aria-practices-menubar"
+}

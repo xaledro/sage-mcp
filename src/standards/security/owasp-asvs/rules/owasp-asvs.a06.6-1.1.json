@@ -1,0 +1,44 @@
+{
+  "id": "owasp-asvs.a06.6-1.1",
+  "standard": "owasp-asvs",
+  "version": "2024",
+  "category": "security-requirement",
+  "title": "Vulnerable and Outdated Components - 6.1.1",
+  "description": "OWASP ASVS requirement 6.1.1 in category A06 (Vulnerable and Outdated Components)",
+  "appliesTo": {
+    "frontend": true,
+    "backend": true
+  },
+  "severity": "critical",
+  "relatedStandards": [],
+  "tags": [
+    "owasp",
+    "security",
+    "asvs"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": true,
+    "manual": false,
+    "lint": false,
+    "validatorId": "secrets"
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "test",
+      "audit"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [],
+    "platforms": [],
+    "criticality": []
+  },
+  "source": "https://owasp.org/ASVS"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "w3c-tokens.tokens.design.decisions.hardcoded",
+  "standard": "w3c-tokens",
+  "version": "1.0",
+  "category": "design-token-spec",
+  "title": "No Hardcoded Values",
+  "description": "Design decisions should reference tokens, not raw values.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "critical",
+  "relatedStandards": [
+    "material3",
+    "wcag22"
+  ],
+  "tags": [
+    "w3c-tokens",
+    "design",
+    "governance"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "technology"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "high"
+    ]
+  },
+  "source": "https://design-tokens.github.io/community-group/format/"
+}

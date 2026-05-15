@@ -1,0 +1,88 @@
+{
+  "_comment": "AI governance relationships with security and quality",
+  "relationType": "EXTENDS",
+  "standard": "ai",
+  "description": "ISO 42001 AI management criteria extending ISO 27001 and ISO 25010",
+  "relations": [
+    {
+      "source": "iso42001.42001-a1",
+      "target": "iso27001.a5.1",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "AI accountability extends organizational controls"
+    },
+    {
+      "source": "iso42001.42001-a2",
+      "target": "iso27001.a5.2",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42001.42001-a3",
+      "target": "iso27001.a6.1",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "AI oversight extends organizational structure"
+    },
+    {
+      "source": "iso42001.42001-a4",
+      "target": "iso27001.a8.9",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "AI supply chain extends third-party requirements"
+    },
+    {
+      "source": "iso42001.42001-a5",
+      "target": "iso27001.a8.15",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "AI access control extends identity management"
+    },
+    {
+      "source": "iso42001.42001-a6",
+      "target": "iso25010.security",
+      "relationType": "EXTENDS",
+      "weight": 1.0,
+      "note": "AI security extends software security"
+    },
+    {
+      "source": "iso42001.42001-a7",
+      "target": "iso25010.confidentiality",
+      "relationType": "EXTENDS",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42001.42001-t1",
+      "target": "iso42001.42001-a1",
+      "relationType": "REQUIRES",
+      "weight": 1.0,
+      "note": "Transparency requirements support accountability"
+    },
+    {
+      "source": "iso42001.42001-t2",
+      "target": "iso42001.42001-a2",
+      "relationType": "REQUIRES",
+      "weight": 1.0
+    },
+    {
+      "source": "iso42001.42001-r1",
+      "target": "iso42001.42001-a1",
+      "relationType": "REQUIRES",
+      "weight": 1.0,
+      "note": "Risk management supports accountability"
+    },
+    {
+      "source": "iso42001.42001-g1",
+      "target": "iso42001.42001-a1",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0,
+      "note": "Governance group implements accountability"
+    },
+    {
+      "source": "iso42001.42001-g2",
+      "target": "iso42001.42001-a3",
+      "relationType": "IMPLEMENTS",
+      "weight": 1.0
+    }
+  ]
+}

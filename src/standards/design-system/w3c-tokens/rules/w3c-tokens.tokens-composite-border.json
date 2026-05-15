@@ -1,0 +1,57 @@
+{
+  "id": "w3c-tokens.tokens.composite.border",
+  "standard": "w3c-tokens",
+  "version": "1.0",
+  "category": "design-token-spec",
+  "title": "Border Composite",
+  "description": "Border tokens compose width, style, color.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "warning",
+  "relatedStandards": [
+    "material3",
+    "wcag22"
+  ],
+  "tags": [
+    "w3c-tokens",
+    "composite",
+    "border"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "technology"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-tokens.github.io/community-group/format/"
+}

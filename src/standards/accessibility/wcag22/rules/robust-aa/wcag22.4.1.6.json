@@ -1,0 +1,55 @@
+{
+  "id": "wcag22.4.1.6",
+  "standard": "wcag22",
+  "version": "2.2",
+  "category": "robust-aa",
+  "title": "4.1.6 - Concurrent Input Mechanisms",
+  "description": "Input mechanisms available for all functions.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "warning",
+  "relatedStandards": [],
+  "tags": [
+    "wcag22",
+    "accessibility",
+    "mobile",
+    "input"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review",
+      "test-plan"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://www.w3.org/TR/WCAG22/#4-1.6"
+}

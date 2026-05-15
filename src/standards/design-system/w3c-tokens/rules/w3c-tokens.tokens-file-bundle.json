@@ -1,0 +1,57 @@
+{
+  "id": "w3c-tokens.tokens.file.bundle",
+  "standard": "w3c-tokens",
+  "version": "1.0",
+  "category": "design-token-spec",
+  "title": "Token Bundle Structure",
+  "description": "Token bundles should organize by category or component.",
+  "appliesTo": {
+    "frontend": true,
+    "mobile": true
+  },
+  "severity": "info",
+  "relatedStandards": [
+    "material3",
+    "wcag22"
+  ],
+  "tags": [
+    "w3c-tokens",
+    "file",
+    "structure"
+  ],
+  "implementation": {
+    "patterns": [],
+    "antiPatterns": [],
+    "codeExamples": [],
+    "tokens": []
+  },
+  "validation": {
+    "automated": false,
+    "manual": true,
+    "lint": false
+  },
+  "evidence": {
+    "requiredArtifacts": [
+      "manual-review"
+    ],
+    "generators": []
+  },
+  "context": {
+    "industries": [
+      "government",
+      "education",
+      "healthcare",
+      "finance",
+      "e-commerce",
+      "technology"
+    ],
+    "platforms": [
+      "frontend",
+      "mobile"
+    ],
+    "criticality": [
+      "medium"
+    ]
+  },
+  "source": "https://design-tokens.github.io/community-group/format/"
+}
