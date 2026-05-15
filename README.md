@@ -13,28 +13,61 @@ SAGE is an MCP server (stdio transport) providing **12 canonical tools** for gov
 
 ## Installation
 
-### Via git URL (recommended)
+### Option 1: Via git URL (recommended - no install needed)
+
 ```bash
 npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
 ```
 
-### Via npm
+Works with all MCP clients. Downloads and runs the latest tagged version.
+
+### Option 2: Via npm
+
 ```bash
 npm install -g @xaledro/sage-mcp
+# or
 pnpm add -g @xaledro/sage-mcp
 ```
 
-### Local development
+Requires npm registry access. CLI `sage-mcp` becomes available globally.
+
+### Option 3: Clone for local development
+
 ```bash
 git clone https://github.com/xaledro/sage-mcp.git
 cd sage-mcp
 pnpm install
-node src/index.js
 ```
+
+Required for:
+- Running tests with `pnpm test`
+- Rebuilding the knowledge graph
+- Contributing to the project
+- Using `type: "local"` in OpenCode config
+
+Then run with `node src/index.js` or link the CLI:
+```bash
+npm link  # creates 'sage-mcp' command
+sage-mcp  # starts the server
+```
+
+---
+
+## Quick Start
+
+1. **Install for your MCP client** (see configurations below)
+2. **Server starts automatically** when your MCP client connects
+3. **First run:** Server indexes 686 rules into SQLite (~2-3 seconds)
+4. **Done:** Query rules, find relationships, run validations, generate evidence
+
+---
 
 ## MCP Client Configuration
 
 ### Claude Code (.mcp.json in project root)
+
+**Installation:** Add to your project's `.mcp.json` file.
+
 ```json
 {
   "mcpServers": {
@@ -47,13 +80,27 @@ node src/index.js
 }
 ```
 
+---
+
 ### Cursor (Settings > MCP Servers)
-```
-Command: npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
-Env: PROJECT_PATH=/path/to/project
-```
+
+**Installation:**
+1. Open Cursor → Settings → MCP Servers
+2. Click "Add new server"
+3. Fill in:
+
+| Field | Value |
+|-------|-------|
+| Name | `sage` |
+| Command | `npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0` |
+| Env: PROJECT_PATH | `/path/to/your/project` |
+
+---
 
 ### Zed (settings.json)
+
+**Installation:** Add to Zed settings (`Cmd+,` → "Open Settings JSON")
+
 ```json
 {
   "context_servers": {
@@ -65,7 +112,19 @@ Env: PROJECT_PATH=/path/to/project
 }
 ```
 
+---
+
 ### OpenCode (opencode.json)
+
+**Installation:** Add to OpenCode config (`opencode.json` in project or home directory)
+
+**Option A: Clone and use locally (recommended for development)**
+```bash
+git clone https://github.com/xaledro/sage-mcp.git /path/to/sage-mcp
+cd /path/to/sage-mcp && pnpm install
+```
+
+Then configure:
 ```jsonc
 {
   "$schema": "https://opencode.ai/config.json",
@@ -73,17 +132,40 @@ Env: PROJECT_PATH=/path/to/project
     "sage": {
       "type": "local",
       "command": ["node", "src/index.js"],
-      "cwd": "path/to/sage-mcp"
+      "cwd": "/path/to/sage-mcp"
     }
   }
 }
 ```
 
-### Generic MCP client (stdio)
-```bash
-cd sage-mcp && node src/index.js
-# Communicates via stdin/stdout, JSON-RPC 2.0
+**Option B: Use npx directly (no clone needed)**
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "sage": {
+      "command": ["npx", "-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"]
+    }
+  }
+}
 ```
+
+---
+
+### Generic MCP client (stdio)
+
+**Installation:** Run directly with Node.js
+```bash
+# Via git clone
+git clone https://github.com/xaledro/sage-mcp.git
+cd sage-mcp && pnpm install
+node src/index.js
+
+# Via npx (no clone needed)
+npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
+```
+
+The server communicates via stdin/stdout using JSON-RPC 2.0.
 
 ## 12 Canonical Tools
 
