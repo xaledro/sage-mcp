@@ -3,6 +3,7 @@ import { readState, writeState, initProjectDir } from '../lib/state.js';
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { existsSync } from 'node:fs';
+import { paths } from '../lib/paths.js';
 
 export async function runDiscovery({ projectPath, stacks, confidenceThreshold }) {
   const args = ['discover', projectPath];
@@ -19,16 +20,18 @@ export async function runDiscovery({ projectPath, stacks, confidenceThreshold })
     timeout: 5 * 60 * 1000
   });
 
+  const p = paths(projectPath);
   return {
     status: result.code === 0 ? 'success' : 'error',
-    outputDir: `${projectPath}/ai/discovered`,
+    outputDir: p.discoveredDir,
     summary: result.stdoutJson?.summary || parseSummaryFromOutput(result.stdout),
     errors: result.stderr ? [{ message: result.stderr }] : []
   };
 }
 
 export async function getDiscoveryStatus(projectPath) {
-  const statusPath = join(projectPath, 'ai', 'discovered', 'discovery.status.json');
+  const p = paths(projectPath);
+  const statusPath = join(p.discoveredDir, 'discovery.status.json');
 
   if (existsSync(statusPath)) {
     const content = await readFile(statusPath, 'utf-8');
@@ -42,25 +45,26 @@ export async function getDiscoveryStatus(projectPath) {
 }
 
 export async function getDiscoveryResults(projectPath) {
+  const p = paths(projectPath);
   const results = {
     tokens: null,
     components: null,
     assets: null
   };
 
-  const tokensPath = join(projectPath, 'ai', 'discovered', 'tokens.json');
+  const tokensPath = join(p.discoveredDir, 'tokens.json');
   if (existsSync(tokensPath)) {
     const content = await readFile(tokensPath, 'utf-8');
     results.tokens = JSON.parse(content);
   }
 
-  const componentsPath = join(projectPath, 'ai', 'discovered', 'components.json');
+  const componentsPath = join(p.discoveredDir, 'components.json');
   if (existsSync(componentsPath)) {
     const content = await readFile(componentsPath, 'utf-8');
     results.components = JSON.parse(content);
   }
 
-  const assetsPath = join(projectPath, 'ai', 'discovered', 'assets.json');
+  const assetsPath = join(p.discoveredDir, 'assets.json');
   if (existsSync(assetsPath)) {
     const content = await readFile(assetsPath, 'utf-8');
     results.assets = JSON.parse(content);

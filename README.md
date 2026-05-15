@@ -1,16 +1,15 @@
-# Standards MCP v3.0.0
+# Sage-MCP v3.0.0
 
-[![version](https://img.shields.io/badge/version-v3.0.0-blue)](https://github.com/xaledro/standards-mcp)
+[![version](https://img.shields.io/badge/version-v3.0.0-blue)](https://github.com/xaledro/sage-mcp)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+
+**SAGE** = **S**emantic **A**nalysis **G**overnance **E**ngine
 
 Semantic governance platform for software lifecycle standards.
 
-## What is this?
+## What is SAGE?
 
-MCP server (stdio transport) providing **12 canonical tools** for governance,
-compliance, and design system validation. v3.0 introduces a knowledge graph
-with cross-standard relationships, automated validation engine, and evidence
-generation.
+SAGE is an MCP server (stdio transport) providing **12 canonical tools** for governance, compliance, and design system validation. v3.0 introduces a knowledge graph with cross-standard relationships, automated validation engine, and evidence generation.
 
 ## Core Concepts
 
@@ -85,19 +84,19 @@ Automated validators for:
 
 ### Global
 ```bash
-npm install -g @xaledro/standards-mcp
+npm install -g @xaledro/sage-mcp
 # or
-pnpm add -g @xaledro/standards-mcp
+pnpm add -g @xaledro/sage-mcp
 ```
 
 ### Via git URL (recommended for latest)
 ```bash
-npx -y git+https://github.com/xaledro/standards-mcp.git#v3.0.0
+npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
 ```
 
 ### As project dependency
 ```bash
-npm install @xaledro/standards-mcp
+npm install @xaledro/sage-mcp
 # or
 pnpm add @xaledro/standards-mcp
 ```

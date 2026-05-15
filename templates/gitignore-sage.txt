@@ -1,0 +1,2 @@
+# Sage-MCP runtime (cache, SQLite, discovery output, validation runs)
+.sage/

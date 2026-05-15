@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { existsSync } from 'node:fs';
+import { paths } from './paths.js';
 
 export async function readState(projectPath, file) {
   try {
@@ -12,7 +13,8 @@ export async function readState(projectPath, file) {
   } catch {
   }
 
-  const fullPath = join(projectPath, 'management', 'state', file);
+  const p = paths(projectPath);
+  const fullPath = join(p.stateDir, file);
   if (existsSync(fullPath)) {
     const content = await readFile(fullPath, 'utf-8');
     return JSON.parse(content);
@@ -31,7 +33,8 @@ export async function writeState(projectPath, file, data) {
   } catch {
   }
 
-  const dir = join(projectPath, 'management', 'state');
+  const p = paths(projectPath);
+  const dir = p.stateDir;
   if (!existsSync(dir)) {
     await mkdir(dir, { recursive: true });
   }
@@ -42,13 +45,15 @@ export async function writeState(projectPath, file, data) {
 }
 
 export async function initProjectDir(projectPath) {
+  const p = paths(projectPath);
   const dirs = [
-    join(projectPath, 'ai'),
-    join(projectPath, 'ai', 'management'),
-    join(projectPath, 'ai', 'management', 'state'),
-    join(projectPath, 'ai', 'discovered'),
-    join(projectPath, 'ai', 'reports'),
-    join(projectPath, 'ai', 'management', 'artefacts')
+    p.cacheDir,
+    p.discoveredDir,
+    p.runsDir,
+    p.reportsDir,
+    p.stateDir,
+    p.decisionsDir,
+    governancePath(projectPath, 'evidence')
   ];
 
   for (const dir of dirs) {
@@ -61,7 +66,8 @@ export async function initProjectDir(projectPath) {
 }
 
 export async function ensureProjectConfig(projectPath) {
-  const configPath = join(projectPath, 'ai', 'project-config.json');
+  const p = paths(projectPath);
+  const configPath = p.config;
 
   if (existsSync(configPath)) {
     return { exists: true, path: configPath };
@@ -87,7 +93,7 @@ export async function ensureProjectConfig(projectPath) {
       "colors": { "primary": "", "secondary": "", "accent": "" }
     },
     "mcp": {
-      "standardsServer": "@xaledro/standards-mcp",
+      "standardsServer": "@xaledro/sage-mcp",
       "designSystemServer": "@base/design-system"
     }
   };

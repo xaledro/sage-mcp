@@ -1,6 +1,6 @@
-# Migration Guide: v2.0 → v3.0
+# Migration Guide: v2.0 → v3.0 (sage-mcp)
 
-Standards-MCP v3.0 is a **breaking change** that reimagines the server as a semantic governance platform.
+> **Note:** This project has been renamed from `standards-mcp` to **sage-mcp** (Semantic Analysis Governance Engine).
 
 ## What's New in v3.0
 
@@ -15,6 +15,53 @@ Standards-MCP v3.0 is a **breaking change** that reimagines the server as a sema
    - `evidence.*` — Compliance evidence generation
    - `context.*` — Project context resolution
    - `ai.*` — AI governance (ISO 42001)
+
+### Output Directory Restructure
+
+v3.0 introduces a split directory structure:
+
+| Old (v2.0) | New (v3.0) |
+|------------|------------|
+| `ai/` | `.sage/` (runtime) + `governance/` (auditable) |
+| `ai/project-config.json` | `governance/config.json` |
+| `ai/management/state/*` | `governance/state/*` |
+| `ai/management/artefacts/*` | `governance/evidence/iso29110/*` |
+| `ai/discovered/*` | `.sage/discovered/*` |
+| `ai/reports/*` | `governance/reports/*` |
+
+**Runtime (`.sage/`) — Gitignored:**
+- `graph.db` — SQLite knowledge graph
+- `cache/` — Context resolver cache
+- `discovered/` — Discovery output
+- `runs/` — Validation run logs
+
+**Auditable (`governance/`) — Committed:**
+- `config.json` — Project configuration
+- `evidence/` — Compliance evidence
+- `decisions/` — ADRs
+- `reports/` — Audit reports
+- `state/` — Workflow state
+
+### Package Rename
+
+**`@xaledro/standards-mcp`** → **`@xaledro/sage-mcp`**
+
+CLI binary: `standards-mcp` → `sage-mcp`
+
+Update your `.mcp.json`:
+```json
+{
+  "mcpServers": {
+    "sage": {
+      "command": "npx",
+      "args": ["-y", "@xaledro/sage-mcp"],
+      "env": { "PROJECT_PATH": "${workspaceFolder}" }
+    }
+  }
+}
+```
+
+Graph database location: `~/.sage/graph.db` (was `~/.standards-mcp/graph.db`)
 
 ### Why This Change?
 

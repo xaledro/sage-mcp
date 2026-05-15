@@ -1,11 +1,11 @@
 {
-  "name": "@xaledro/standards-mcp",
+  "name": "@xaledro/sage-mcp",
   "version": "3.0.0-alpha.1",
   "description": "Semantic governance platform — standards as executable rules with knowledge graph",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "standards-mcp": "src/index.js"
+    "sage-mcp": "src/index.js"
   },
   "scripts": {
     "start": "node src/index.js",

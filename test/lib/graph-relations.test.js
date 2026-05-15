@@ -37,8 +37,8 @@ describe('graph relations', () => {
   let graph;
 
   before(async () => {
-    const home = process.env.HOME || process.env.USERPROFILE || join(rootDir, '.standards-mcp');
-    const testDbPath = join(home, 'graph.db');
+const home = process.env.HOME || process.env.USERPROFILE || join(rootDir, '.sage');
+const testDbPath = join(home, 'graph.db');
 
     graph = await createGraphDb(testDbPath);
     await populateTestDb(graph);

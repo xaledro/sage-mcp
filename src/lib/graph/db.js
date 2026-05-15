@@ -16,7 +16,7 @@ async function initSql() {
 
 function getDefaultDbPath() {
   const home = process.env.HOME || process.env.USERPROFILE || '/tmp';
-  return join(home, '.standards-mcp', 'graph.db');
+  return join(home, '.sage', 'graph.db');
 }
 
 function ensureDir(filePath) {

@@ -2,6 +2,7 @@ import { execCli } from '../lib/exec.js';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { existsSync } from 'node:fs';
+import { paths } from '../lib/paths.js';
 
 export async function runAudit({ projectPath, baseTokensPath }) {
   const args = ['audit', '--source', projectPath];
@@ -19,8 +20,9 @@ export async function runAudit({ projectPath, baseTokensPath }) {
 }
 
 export async function getAuditResults(projectPath) {
-  const auditReportPath = join(projectPath, 'ai', 'reports', 'audit-report.md');
-  const auditJsonPath = join(projectPath, 'ai', 'discovered', 'audit-report.json');
+  const p = paths(projectPath);
+  const auditReportPath = join(p.reportsDir, 'audit-report.md');
+  const auditJsonPath = join(p.discoveredDir, 'audit-report.json');
 
   let report = null;
   let json = null;

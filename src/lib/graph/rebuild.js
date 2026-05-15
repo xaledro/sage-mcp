@@ -9,21 +9,22 @@ import { loadRule } from '../rule-model.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..', '..', '..');
-const standardsDir = join(rootDir, 'src/standards');
+const standardsDir = join(rootDir, 'src', 'standards');
 const relationsDir = join(standardsDir, '_relations');
+const dbPath = join(rootDir, '.sage', 'graph.db');
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 const relationsOnly = process.argv.includes('--relations-only');
 
 async function indexAll() {
   if (force) {
-    const graph = await createGraphDb();
+    const graph = await createGraphDb(dbPath);
     graph.clearAll();
     graph.close();
 
-    const rulesResult = await rebuildGraph(standardsDir);
+    const rulesResult = await rebuildGraph(standardsDir, dbPath);
     console.log(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
 
-    const graph2 = await createGraphDb();
+    const graph2 = await createGraphDb(dbPath);
     const files = discoverRuleFiles(standardsDir);
     const existingRules = [];
     for (const file of files) {
@@ -35,10 +36,10 @@ async function indexAll() {
     console.log(`Relations: ${relResult.indexed} indexed, ${relResult.errors} errors, ${relResult.skipped} skipped`);
     graph2.close();
   } else {
-    const rulesResult = await indexRules(standardsDir);
+    const rulesResult = await indexRules(standardsDir, dbPath);
     console.log(`Rules: ${rulesResult.indexed} indexed, ${rulesResult.errors} errors`);
 
-    const graph = await createGraphDb();
+    const graph = await createGraphDb(dbPath);
     const files = discoverRuleFiles(standardsDir);
     const existingRules = [];
     for (const file of files) {
@@ -54,7 +55,7 @@ async function indexAll() {
 
 async function main() {
   if (relationsOnly) {
-    const graph = await createGraphDb();
+    const graph = await createGraphDb(dbPath);
     const files = discoverRuleFiles(standardsDir);
     const existingRules = [];
     for (const file of files) {

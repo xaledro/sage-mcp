@@ -21,7 +21,7 @@ const standardsDir = join(rootDir, 'src/standards');
 
 const server = new Server(
   {
-    name: 'standards-mcp',
+    name: 'sage-mcp',
     version: '3.0.0',
   },
   {

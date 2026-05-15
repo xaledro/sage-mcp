@@ -1,14 +1,13 @@
-# Standards MCP Server v3.0 — Agent Instructions
+# Sage-MCP Server v3.0 — Agent Instructions
 
 > MCP server exposing software lifecycle standards as canonical tools.
 > Compatible with any MCP client: Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.
 
-## What this is
+## What is SAGE?
 
-An MCP server (stdio transport) that provides **12 canonical tools** for
-governance, compliance, and design system validation based on international
-standards. v3.0 is a semantic governance platform with knowledge graph,
-validation engine, and evidence generation.
+**SAGE** = **S**emantic **A**nalysis **G**overnance **E**ngine
+
+SAGE is a semantic governance platform for software lifecycle standards. It provides executable rules with knowledge graph traversal, automated validation, and evidence generation.
 
 ## Available tools (v3.0.0)
 
@@ -70,15 +69,21 @@ validation engine, and evidence generation.
 - `secrets` — Hardcoded credentials detection
 - `coverage` — ISO 25010 code coverage thresholds
 
+## Output Directories
+
+SAGE uses a split directory structure:
+- **`.sage/`** — Runtime (gitignored): SQLite graph, cache, discovery output, validation runs
+- **`governance/`** — Auditable (committed): evidence, ADRs, reports, state
+
 ## Configuration by agent
 
 ### Claude Code (.mcp.json in project root)
 ```json
 {
   "mcpServers": {
-    "standards": {
+    "sage": {
       "command": "npx",
-      "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v3.0.0"],
+      "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
       "env": { "PROJECT_PATH": "${workspaceFolder}" }
     }
   }
@@ -86,15 +91,15 @@ validation engine, and evidence generation.
 ```
 
 ### Cursor (Settings > MCP Servers)
-Add server with command: `npx -y git+https://github.com/xaledro/standards-mcp.git#v3.0.0`
+Add server with command: `npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0`
 Set env: `PROJECT_PATH` to your project root.
 
 ### Zed (settings.json)
 ```json
 {
   "context_servers": {
-    "standards": {
-      "command": { "path": "npx", "args": ["-y", "git+https://github.com/xaledro/standards-mcp.git#v3.0.0"] },
+    "sage": {
+      "command": { "path": "npx", "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"] },
       "env": { "PROJECT_PATH": "." }
     }
   }
@@ -106,10 +111,10 @@ Set env: `PROJECT_PATH` to your project root.
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "standards": {
+    "sage": {
       "type": "local",
       "command": ["node", "src/index.js"],
-      "cwd": "path/to/standards-mcp",
+      "cwd": "path/to/sage-mcp",
       "enabled": true
     }
   }
@@ -118,7 +123,7 @@ Set env: `PROJECT_PATH` to your project root.
 
 ### Generic MCP client (stdio)
 ```bash
-cd standards-mcp && node src/index.js
+cd sage-mcp && node src/index.js
 # Communicates via stdin/stdout, JSON-RPC 2.0
 ```
 
@@ -127,7 +132,7 @@ cd standards-mcp && node src/index.js
 - Node.js >= 18
 - No external dependencies — fully self-contained (v3.0.0)
 
-## Migration from v2.0
+## Migration from v2.0 / standards-mcp
 
 v3.0 is a **breaking change**. The 41 v2.0 tools are replaced by 12 canonical tools:
 
@@ -140,12 +145,10 @@ v3.0 is a **breaking change**. The 41 v2.0 tools are replaced by 12 canonical to
 | `material.tokens` | `rules.list({standard: "material3"})` |
 | `discovery.run`, `audit.run` | `validation.run` |
 
-See `MIGRATION.md` for full mapping.
-
 ## Development
 
 ```bash
-cd standards-mcp
+cd sage-mcp
 pnpm install
 
 # Run tests

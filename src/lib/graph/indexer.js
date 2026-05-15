@@ -22,14 +22,9 @@ async function indexRules(standardsDir, dbPath) {
     return { indexed: 0, errors: 0 };
   }
 
-  const fileHash = computeFilesHash(files);
   const currentCount = graph.count();
+  console.log(`Indexing ${files.length} rule files... (current cache: ${currentCount} rules)`);
 
-  if (currentCount > 0) {
-    console.log(`Cache: ${currentCount} rules already indexed`);
-  }
-
-  console.log(`Indexing ${files.length} rule files...`);
   graph.clearAll();
 
   let errors = 0;
@@ -51,6 +46,7 @@ async function indexRules(standardsDir, dbPath) {
     }
   }
   graph.close();
+  console.log(`Indexed ${indexed} rules with ${errors} errors`);
   return { indexed, errors };
 }
 
