@@ -196,18 +196,23 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
     switch (name) {
       case 'rules.list':
+        await ensureGraphInitialized();
         return { content: [{ type: 'text', text: JSON.stringify(await listRules(args), null, 2) }] };
 
       case 'rules.get':
+        await ensureGraphInitialized();
         return { content: [{ type: 'text', text: JSON.stringify(await getRule(args), null, 2) }] };
 
       case 'rules.query':
+        await ensureGraphInitialized();
         return { content: [{ type: 'text', text: JSON.stringify(await queryRules(args), null, 2) }] };
 
       case 'rules.audit':
+        await ensureGraphInitialized();
         return { content: [{ type: 'text', text: JSON.stringify(await auditRules(args), null, 2) }] };
 
       case 'graph.related': {
+        await ensureGraphInitialized();
         const graph = await createGraphDb();
         const opts = {};
         if (args.depth) opts.depth = args.depth;
@@ -241,6 +246,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'validation.run': {
+        await ensureGraphInitialized();
         const result = await runValidation({
           standard: args.standard,
           ruleId: args.ruleId,
@@ -250,6 +256,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'validation.report': {
+        await ensureGraphInitialized();
         const result = await generateReport({
           projectPath: args.projectPath || process.cwd(),
           format: args.format || 'json'
@@ -258,6 +265,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'evidence.generate': {
+        await ensureGraphInitialized();
         const result = await generateEvidence({
           ruleId: args.ruleId,
           projectPath: args.projectPath || process.cwd()
@@ -266,6 +274,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'context.resolve': {
+        await ensureGraphInitialized();
         const result = await resolveContext({
           projectPath: args.projectPath || process.cwd()
         });
@@ -273,6 +282,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'ai.model': {
+        await ensureGraphInitialized();
         const graph = await createGraphDb();
         const rules = graph.db.exec('SELECT * FROM rules WHERE standard = ?', ['iso42001']);
         graph.close();
@@ -291,17 +301,31 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 async function initializeGraph() {
-  // Index in background after transport is ready
-  setImmediate(async () => {
+  // Index on first use, not in background, to ensure data is ready
+}
+
+let graphInitialized = false;
+let initPromise = null;
+
+async function ensureGraphInitialized() {
+  if (graphInitialized) return;
+  if (initPromise) return initPromise;
+  
+  initPromise = (async () => {
     try {
       const files = discoverRuleFiles(standardsDir);
       if (files.length > 0) {
         await indexRules(standardsDir);
       }
+      graphInitialized = true;
     } catch (e) {
       console.error('Warning: Could not initialize graph:', e.message);
+    } finally {
+      initPromise = null;
     }
-  });
+  })();
+  
+  return initPromise;
 }
 
 const transport = new StdioServerTransport();

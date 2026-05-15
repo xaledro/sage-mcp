@@ -18,14 +18,17 @@ async function indexRules(standardsDir, dbPath) {
 
   const files = discoverRuleFiles(standardsDir);
   if (files.length === 0) {
-    console.error('No rule files found');
+    graph.close();
     return { indexed: 0, errors: 0 };
   }
 
   const currentCount = graph.count();
-  console.error(`Indexing ${files.length} rule files... (current cache: ${currentCount} rules)`);
+  if (currentCount >= files.length) {
+    graph.close();
+    return { indexed: currentCount, errors: 0 };
+  }
 
-  graph.clearAll();
+  console.error(`Indexing ${files.length} rule files...`);
 
   let errors = 0;
   let indexed = 0;
