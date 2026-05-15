@@ -57,7 +57,6 @@ export async function generateEvidence({ ruleId, projectPath }) {
       evidence.artifacts.push(defaultArtifact);
     }
     
-    const evidencePath = join(evidenceDir, `evidence-${Date.now()}.json`);
     writeFileSync(evidencePath, JSON.stringify(evidence, null, 2));
     
     recordEvidence(graph, evidence);
