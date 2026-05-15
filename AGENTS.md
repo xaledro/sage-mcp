@@ -1,15 +1,78 @@
-# Sage-MCP Server v3.0 — Agent Instructions
+# Sage-MCP v3.0 — Agent Configuration Guide
 
-> MCP server exposing software lifecycle standards as canonical tools.
-> Compatible with any MCP client: Claude Code, Cursor, Zed, OpenCode, Windsurf, etc.
+> **SAGE** = **S**emantic **A**nalysis **G**overnance **E**ngine
+>
+> MCP server providing 12 canonical tools for governance, compliance, and design system validation. Compatible with Claude Code, Cursor, Zed, OpenCode, Windsurf, and any MCP client.
 
-## What is SAGE?
+## Quick Start
 
-**SAGE** = **S**emantic **A**nalysis **G**overnance **E**ngine
+```bash
+# Via git URL (recommended)
+npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
 
-SAGE is a semantic governance platform for software lifecycle standards. It provides executable rules with knowledge graph traversal, automated validation, and evidence generation.
+# Start server
+node src/index.js
+```
 
-## Available tools (v3.0.0)
+## MCP Client Configuration
+
+### Claude Code (`.mcp.json` in project root)
+
+```json
+{
+  "mcpServers": {
+    "sage": {
+      "command": "npx",
+      "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
+      "env": { "PROJECT_PATH": "${workspaceFolder}" }
+    }
+  }
+}
+```
+
+### Cursor (Settings > MCP Servers)
+
+| Field | Value |
+|-------|-------|
+| Command | `npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0` |
+| Env: PROJECT_PATH | `/path/to/project` |
+
+### Zed (settings.json)
+
+```json
+{
+  "context_servers": {
+    "sage": {
+      "command": { "path": "npx", "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"] },
+      "env": { "PROJECT_PATH": "." }
+    }
+  }
+}
+```
+
+### OpenCode (opencode.json)
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "sage": {
+      "type": "local",
+      "command": ["node", "src/index.js"],
+      "cwd": "path/to/sage-mcp"
+    }
+  }
+}
+```
+
+### Generic MCP client (stdio)
+
+```bash
+cd sage-mcp && node src/index.js
+# Communicates via stdin/stdout, JSON-RPC 2.0
+```
+
+## 12 Canonical Tools
 
 ### Rules Tools
 | Tool | Description |
@@ -40,7 +103,7 @@ SAGE is a semantic governance platform for software lifecycle standards. It prov
 | `context.resolve` | Resolve project context (industry, platform, criticality) |
 | `ai.model` | Get AI governance model (ISO 42001 criteria as executable rules) |
 
-## Standards Supported (692 rules)
+## Standards Coverage (686 rules, 17 standards)
 
 | Domain | Standards | Rules |
 |--------|-----------|-------|
@@ -51,12 +114,13 @@ SAGE is a semantic governance platform for software lifecycle standards. It prov
 | **ai** | iso42001 | 29 |
 | **architecture** | arc42, iso42010 | 17 |
 | **ux** | iso9241, nielsen | 34 |
-| **design-system** | material3, w3c-tokens, carbon, gov-uk | 178 |
+| **design-system** | material3, w3c-tokens, carbon, gov-uk | 172 |
 | **accessibility** | wcag22, wai-aria | 223 |
 
 ## Knowledge Graph
 
-- **259 relations** indexed across standards
+- **686 rules** indexed from 17 standards
+- **259 relations** across standards
 - Relation types: IMPLEMENTS, EXTENDS, MAPS_TO, REQUIRES, CONFLICTS_WITH, RELATED
 - Cross-standard relationships: WCAG ↔ Material ↔ Carbon ↔ ISO 25010
 
@@ -72,78 +136,22 @@ SAGE is a semantic governance platform for software lifecycle standards. It prov
 ## Output Directories
 
 SAGE uses a split directory structure:
-- **`.sage/`** — Runtime (gitignored): SQLite graph, cache, discovery output, validation runs
-- **`governance/`** — Auditable (committed): evidence, ADRs, reports, state
 
-## Configuration by agent
+| Directory | Purpose | Gitignored |
+|-----------|---------|------------|
+| `.sage/` | Runtime: SQLite graph, cache, discovery output, validation runs | Yes |
+| `governance/` | Auditable: evidence, ADRs, reports, state | No |
 
-### Claude Code (.mcp.json in project root)
-```json
-{
-  "mcpServers": {
-    "sage": {
-      "command": "npx",
-      "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
-      "env": { "PROJECT_PATH": "${workspaceFolder}" }
-    }
-  }
-}
+Add to your `.gitignore`:
 ```
-
-### Cursor (Settings > MCP Servers)
-Add server with command: `npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0`
-Set env: `PROJECT_PATH` to your project root.
-
-### Zed (settings.json)
-```json
-{
-  "context_servers": {
-    "sage": {
-      "command": { "path": "npx", "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"] },
-      "env": { "PROJECT_PATH": "." }
-    }
-  }
-}
-```
-
-### OpenCode (opencode.json)
-```jsonc
-{
-  "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "sage": {
-      "type": "local",
-      "command": ["node", "src/index.js"],
-      "cwd": "path/to/sage-mcp",
-      "enabled": true
-    }
-  }
-}
-```
-
-### Generic MCP client (stdio)
-```bash
-cd sage-mcp && node src/index.js
-# Communicates via stdin/stdout, JSON-RPC 2.0
+# Sage-MCP runtime
+.sage/
 ```
 
 ## Requirements
 
 - Node.js >= 18
 - No external dependencies — fully self-contained (v3.0.0)
-
-## Migration from v2.0 / standards-mcp
-
-v3.0 is a **breaking change**. The 41 v2.0 tools are replaced by 12 canonical tools:
-
-| v2.0 | v3.0 |
-|------|------|
-| `arc42.section`, `arc42.template`, `arc42.checklist` | `rules.list` + `rules.get` |
-| `owasp.requirements`, `owasp.verify` | `rules.query` + `validation.run` |
-| `iso29110.artefact` | `evidence.generate` |
-| `iso25010.qualityModel` | `rules.list({standard: "iso25010"})` |
-| `material.tokens` | `rules.list({standard: "material3"})` |
-| `discovery.run`, `audit.run` | `validation.run` |
 
 ## Development
 
@@ -160,3 +168,18 @@ node src/lib/graph/rebuild.js --force
 # Start production
 node src/index.js
 ```
+
+## Migration from v2.0 / standards-mcp
+
+v3.0 is a **breaking change**. The 41 v2.0 tools are replaced by 12 canonical tools:
+
+| v2.0 | v3.0 |
+|------|------|
+| `arc42.section`, `arc42.template`, `arc42.checklist` | `rules.list` + `rules.get` |
+| `owasp.requirements`, `owasp.verify` | `rules.query` + `validation.run` |
+| `iso29110.artefact` | `evidence.generate` |
+| `iso25010.qualityModel` | `rules.list({standard: "iso25010"})` |
+| `material.tokens` | `rules.list({standard: "material3"})` |
+| `discovery.run`, `audit.run` | `validation.run` |
+
+See `MIGRATION.md` for full mapping.

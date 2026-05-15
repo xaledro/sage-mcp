@@ -1,13 +1,54 @@
 # Migration Guide: v2.0 → v3.0 (sage-mcp)
 
-> **Note:** This project has been renamed from `standards-mcp` to **sage-mcp** (Semantic Analysis Governance Engine).
+> **SAGE** = **S**emantic **A**nalysis **G**overnance **E**ngine
+>
+> This project was renamed from `standards-mcp` to **`sage-mcp`**.
+
+## Installation
+
+### Via git URL (recommended)
+```bash
+npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
+```
+
+### Via npm
+```bash
+npm install -g @xaledro/sage-mcp
+```
+
+### Update your `.mcp.json` for v3.0
+
+**Before (v2.0):**
+```json
+{
+  "mcpServers": {
+    "standards": {
+      "command": "npx",
+      "args": ["-y", "@xaledro/standards-mcp"]
+    }
+  }
+}
+```
+
+**After (v3.0):**
+```json
+{
+  "mcpServers": {
+    "sage": {
+      "command": "npx",
+      "args": ["-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
+      "env": { "PROJECT_PATH": "${workspaceFolder}" }
+    }
+  }
+}
+```
 
 ## What's New in v3.0
 
 ### Architecture Changes
 
 1. **Canonical Rule Model** — All standards stored as JSON files in `src/standards/{domain}/{standard}/rules/*.json` with unified `StandardRule` schema
-2. **Knowledge Graph** — 692 rules indexed in SQLite at startup with 259 cross-standard relationships
+2. **Knowledge Graph** — 686 rules indexed in SQLite at startup with 259 cross-standard relationships
 3. **12 Canonical Tools** — Replaces 41 v2.0 tools:
    - `rules.*` — Rule queries and audits
    - `graph.*` — Knowledge graph traversal
@@ -42,34 +83,19 @@ v3.0 introduces a split directory structure:
 - `reports/` — Audit reports
 - `state/` — Workflow state
 
-### Package Rename
-
-**`@xaledro/standards-mcp`** → **`@xaledro/sage-mcp`**
-
-CLI binary: `standards-mcp` → `sage-mcp`
-
-Update your `.mcp.json`:
-```json
-{
-  "mcpServers": {
-    "sage": {
-      "command": "npx",
-      "args": ["-y", "@xaledro/sage-mcp"],
-      "env": { "PROJECT_PATH": "${workspaceFolder}" }
-    }
-  }
-}
+Add `.sage/` to your `.gitignore`:
+```
+# Sage-MCP runtime
+.sage/
 ```
 
-Graph database location: `~/.sage/graph.db` (was `~/.standards-mcp/graph.db`)
+### Package Rename
 
-### Why This Change?
-
-v2.0 generated documentary templates; v3.0 provides executable rules with audit trails:
-- Multi-standard queries (e.g., "what rules apply to a React frontend?")
-- Cross-standard relationships (WCAG ↔ Material ↔ ISO 25010 ↔ Nielsen)
-- Validatable compliance (automated validators)
-- Evidence generation with git commit traceability
+| Old | New |
+|-----|-----|
+| `@xaledro/standards-mcp` | `@xaledro/sage-mcp` |
+| CLI `standards-mcp` | `sage-mcp` |
+| Graph `~/.standards-mcp/graph.db` | `~/.sage/graph.db` |
 
 ---
 
@@ -212,11 +238,12 @@ context.resolve({ projectPath: "/path/to/project" })
 
 ## Breaking Changes Summary
 
-1. **Tool names** — 41 tools replaced by 12 canonical tools
-2. **Response format** — Rules return full `StandardRule` objects
-3. **No discovery** — Design system discovery deprecated
-4. **Project config** — File-based in `ai/project-config.json`
-5. **Graph init** — Server indexes rules at startup (~2-3 seconds first run)
+1. **Package name** — `@xaledro/standards-mcp` → `@xaledro/sage-mcp`
+2. **CLI name** — `standards-mcp` → `sage-mcp`
+3. **Tool names** — 41 tools replaced by 12 canonical tools
+4. **Output dirs** — `ai/` split into `.sage/` (runtime) + `governance/` (auditable)
+5. **Response format** — Rules return full `StandardRule` objects
+6. **Graph init** — Server indexes rules at startup (~2-3 seconds first run)
 
 ---
 
@@ -231,9 +258,9 @@ context.resolve({ projectPath: "/path/to/project" })
 | ai | iso42001 | 29 |
 | architecture | arc42, iso42010 | 17 |
 | ux | iso9241, nielsen | 34 |
-| design-system | material3, w3c-tokens, carbon, gov-uk | 178 |
+| design-system | material3, w3c-tokens, carbon, gov-uk | 172 |
 | accessibility | wcag22, wai-aria | 223 |
-| **Total** | **17 standards** | **692 rules** |
+| **Total** | **17 standards** | **686 rules** |
 
 ---
 
@@ -243,4 +270,4 @@ context.resolve({ projectPath: "/path/to/project" })
 - **v3.0.0-alpha.2** — Knowledge graph with relationships
 - **v3.0.0-beta.1** — New standards (WCAG 2.2, WAI-ARIA, W3C tokens)
 - **v3.0.0-beta.2** — Validation engine (5 validators)
-- **v3.0.0** (current) — Evidence engine, context resolver, full coverage
+- **v3.0.0** (current) — SAGE rebrand, split output dirs, 686 rules
