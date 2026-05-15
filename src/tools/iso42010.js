@@ -1,3 +1,5 @@
+import { inspect } from '../lib/project-intelligence.js';
+
 const iso42010Views = {
   logical: {
     name: "Logical View",
@@ -204,7 +206,7 @@ const iso42010Views = {
   }
 };
 
-function getIso42010View(viewName, config = {}) {
+function getIso42010View(viewName, config = {}, projectPath = null) {
   const viewKey = viewName?.toLowerCase();
   const view = iso42010Views[viewKey];
 
@@ -212,11 +214,145 @@ function getIso42010View(viewName, config = {}) {
     throw new Error(`Unknown view: ${viewName}. Available: ${Object.keys(iso42010Views).join(', ')}`);
   }
 
+  let personalizedView = { ...view };
+
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      personalizedView = personalizeView(viewKey, personalizedView, facts);
+    } catch {
+    }
+  }
+
   return {
-    ...view,
+    ...personalizedView,
     configuration: config,
     generatedAt: new Date().toISOString()
   };
+}
+
+function personalizeView(viewKey, view, facts) {
+  const { stack, modules, backend } = facts;
+  const personalized = { ...view };
+
+  if (viewKey === 'deployment') {
+    personalized.template = personalizeDeploymentViewTemplate(view.template, stack, backend);
+  }
+
+  if (viewKey === 'logical') {
+    personalized.template = personalizeLogicalViewTemplate(view.template, modules, stack);
+  }
+
+  if (viewKey === 'operational') {
+    personalized.template = personalizeOperationalViewTemplate(view.template, stack);
+  }
+
+  return personalized;
+}
+
+function personalizeDeploymentViewTemplate(template, stack, backend) {
+  let result = template;
+
+  if (stack.available) {
+    const infraNodes = buildInfraNodes(stack, backend);
+    result = result.replace(
+      /\| \[Name\] \| \[Server\/Container\/Cloud\] \| \[CPU\/Memory\] \| \[Region\/AZ\] \|/g,
+      infraNodes
+    );
+
+    const scalingStrategy = buildScalingStrategy(stack);
+    result = result.replace(
+      /- Horizontal scaling for stateless services/g,
+      scalingStrategy
+    );
+  }
+
+  return result;
+}
+
+function buildInfraNodes(stack, backend) {
+  const nodes = [];
+
+  if (stack.bundler.id === 'vercel' || stack.framework.id !== 'unknown') {
+    nodes.push('| Vercel Edge | Cloud CDN | Global distribution | Worldwide |');
+  }
+
+  if (stack.runtime.id === 'supabase' || (backend.available && backend.supabase)) {
+    nodes.push('| Supabase Cloud | PostgreSQL + Auth | 2 vCPU, 1GB RAM | us-east-1 |');
+  }
+
+  if (stack.runtime.id === 'deno' || (backend.available && backend.deno)) {
+    nodes.push('| Deno Deploy | Edge Functions | Serverless | Global |');
+  }
+
+  if (nodes.length === 0) {
+    nodes.push('| Application Server | Container | 1 vCPU, 512MB | Local |');
+  }
+
+  return nodes.join('\n');
+}
+
+function buildScalingStrategy(stack) {
+  const strategies = [];
+
+  if (stack.bundler.id === 'vercel') {
+    strategies.push('- Vercel auto-scaling: unlimited based on traffic');
+    strategies.push('- CDN caching for static assets');
+  }
+
+  if (stack.runtime.id === 'supabase') {
+    strategies.push('- Supabase managed: automatic scaling with limits');
+    strategies.push('- Read replicas for database scaling');
+  }
+
+  if (strategies.length === 0) {
+    strategies.push('- Horizontal pod autoscaling based on CPU/memory');
+    strategies.push('- Database clustering for persistence');
+  }
+
+  return strategies.join('\n');
+}
+
+function personalizeLogicalViewTemplate(template, modules, stack) {
+  let result = template;
+
+  if (modules.available && modules.modules.length > 0) {
+    const abstractions = modules.modules.slice(0, 10).map(m => {
+      return `| ${m.name} | ${m.kind} module, ${m.fileCount} files | ${m.path} |`;
+    }).join('\n');
+
+    result = result.replace(
+      /\| \[Name\] \| \[What it does\] \| \[APIs provided\] \|/g,
+      abstractions
+    );
+  }
+
+  return result;
+}
+
+function personalizeOperationalViewTemplate(template, stack) {
+  let result = template;
+
+  if (stack.available) {
+    const scenarios = [];
+
+    if (stack.runtime.id === 'supabase') {
+      scenarios.push('| Supabase Auth | User login | Supabase validates, returns session | <100ms |');
+    }
+
+    if (stack.framework.id === 'react') {
+      scenarios.push('| React SPA | User navigation | Client routing, lazy loading | <50ms |');
+    }
+
+    if (scenarios.length > 0) {
+      result = result.replace(
+        /\| \[Name\] \| \[Event\] \| \[Action\] \| \[Time\] \|/g,
+        scenarios.join('\n')
+      );
+    }
+  }
+
+  return result;
 }
 
 function listIso42010Views() {

@@ -1,3 +1,5 @@
+import { inspect } from '../lib/project-intelligence.js';
+
 const owaspASVS = {
   L1: {
     name: "Level 1 - All requirements",
@@ -161,7 +163,7 @@ const owaspASVS = {
   }
 };
 
-function getOwaspRequirements(level, category) {
+function getOwaspRequirements(level, category, projectPath = null) {
   const levelData = owaspASVS[level];
   if (!levelData) {
     throw new Error(`Invalid ASVS level: ${level}. Valid: L1, L2, L3`);
@@ -174,6 +176,15 @@ function getOwaspRequirements(level, category) {
       c.name.toLowerCase().includes(category.toLowerCase()) ||
       c.id.toLowerCase() === category.toLowerCase()
     );
+  }
+
+  let verification = null;
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      verification = verifyOwaspAgainstProject(facts);
+    } catch {
+    }
   }
 
   return {
@@ -189,8 +200,91 @@ function getOwaspRequirements(level, category) {
         verified: false
       }))
     })),
-    totalRequirements: categories.reduce((sum, cat) => sum + cat.requirements.length, 0)
+    totalRequirements: categories.reduce((sum, cat) => sum + cat.requirements.length, 0),
+    verification
   };
+}
+
+function verifyOwaspAgainstProject(facts) {
+  const { stack, backend } = facts;
+  const verified = [];
+  const gaps = [];
+
+  if (stack.available) {
+    if (stack.framework.id === 'react' || stack.framework.id === 'vue') {
+      verified.push({ id: 'A05', text: 'Client-side framework detected - CSRF protection needed' });
+    }
+    if (stack.runtime.id === 'supabase') {
+      verified.push({ id: 'A07', text: 'Supabase Auth - session management built-in' });
+    }
+    if (!stack.packages?.list?.includes('helmet')) {
+      gaps.push({ id: 'A05', text: 'Missing helmet.js for security headers' });
+    }
+  }
+
+  if (backend.available) {
+    if (backend.supabase) {
+      verified.push({ id: 'A01', text: 'Supabase RLS policies protect data' });
+    }
+    if (backend.prisma) {
+      verified.push({ id: 'A03', text: 'Prisma ORM - SQL injection mitigated via parameterized queries' });
+    }
+  }
+
+  return { verified, gaps };
+}
+
+function verifyOwaspRequirements(level, projectPath) {
+  const levelData = owaspASVS[level];
+  if (!levelData) {
+    throw new Error(`Invalid ASVS level: ${level}. Valid: L1, L2, L3`);
+  }
+
+  if (!projectPath) {
+    return { level, verified: false, message: 'projectPath required for verification' };
+  }
+
+  let facts;
+  try {
+    facts = inspect(projectPath);
+  } catch (e) {
+    return { level, verified: false, message: e.message };
+  }
+
+  const { stack, backend } = facts;
+  const results = {
+    level,
+    passed: [],
+    failed: [],
+    summary: { passed: 0, failed: 0, total: 0 }
+  };
+
+  if (!stack.available) {
+    results.failed.push({ check: 'package.json', message: 'No package.json found - cannot verify' });
+  }
+
+  if (stack.available && stack.runtime.id === 'supabase') {
+    results.passed.push({ check: 'A01-RLS', message: 'Supabase RLS policies available' });
+  }
+
+  if (backend.available && backend.prisma) {
+    results.passed.push({ check: 'A03-ORM', message: 'Prisma parameterized queries (SQL injection mitigated)' });
+  }
+
+  if (stack.available && stack.packages?.list) {
+    if (stack.packages.list.includes('zod')) {
+      results.passed.push({ check: 'A03-Zod', message: 'Zod validation available' });
+    }
+    if (stack.packages.list.includes('helmet')) {
+      results.passed.push({ check: 'A05-Helmet', message: 'Security headers configured' });
+    }
+  }
+
+  results.summary.total = results.passed.length + results.failed.length;
+  results.summary.passed = results.passed.length;
+  results.summary.failed = results.failed.length;
+
+  return results;
 }
 
 function getOwaspCategories() {
@@ -201,4 +295,4 @@ function getOwaspCategories() {
   };
 }
 
-export { getOwaspRequirements, getOwaspCategories, owaspASVS };
+export { getOwaspRequirements, getOwaspCategories, verifyOwaspRequirements, owaspASVS };

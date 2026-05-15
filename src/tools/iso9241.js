@@ -1,3 +1,5 @@
+import { inspect } from '../lib/project-intelligence.js';
+
 const iso9241Checklists = {
   effectiveness: {
     name: "Effectiveness",
@@ -43,7 +45,7 @@ const iso9241Checklists = {
   }
 };
 
-function getIso9241Checklist(category) {
+function getIso9241Checklist(category, projectPath = null) {
   if (!category) {
     return {
       standard: "ISO 9241-11",
@@ -65,6 +67,15 @@ function getIso9241Checklist(category) {
     throw new Error(`Invalid category: ${category}. Available: ${Object.keys(iso9241Checklists).join(', ')}`);
   }
 
+  let projectInfo = null;
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      projectInfo = getProjectUsabilityContext(facts);
+    } catch {
+    }
+  }
+
   return {
     standard: "ISO 9241-11",
     category: categoryLower,
@@ -75,8 +86,34 @@ function getIso9241Checklist(category) {
       high: "Critical for usability - must pass",
       medium: "Important - should pass",
       low: "Nice to have - consider for improvement"
-    }
+    },
+    projectInfo
   };
+}
+
+function getProjectUsabilityContext(facts) {
+  const { stack, modules } = facts;
+  const context = {};
+
+  if (stack.available) {
+    context.framework = stack.framework.id;
+    context.bundler = stack.bundler.id;
+
+    if (stack.framework.id === 'react' || stack.framework.id === 'vue') {
+      context.componentLibrary = 'Component-based SPA - accessibility depends on component quality';
+    }
+
+    if (stack.css.id === 'tailwind') {
+      context.styling = 'Tailwind CSS - utility-first approach';
+    }
+  }
+
+  if (modules.available) {
+    context.moduleCount = modules.count;
+    context.modules = modules.modules.slice(0, 5).map(m => m.name);
+  }
+
+  return context;
 }
 
 function listIso9241Categories() {

@@ -1,3 +1,5 @@
+import { inspect } from '../lib/project-intelligence.js';
+
 const iso25010Model = {
   qualityCharacteristics: [
     {
@@ -239,8 +241,8 @@ const iso25010Model = {
   ]
 };
 
-function getIso25010Model() {
-  return {
+function getIso25010Model(projectPath = null) {
+  const model = {
     standard: "ISO 25010:2011",
     version: "2011",
     description: "Software product quality requirements and evaluation model",
@@ -255,26 +257,88 @@ function getIso25010Model() {
       (sum, char) => sum + char.subCharacteristics.length, 0
     )
   };
+
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      model.projectContext = getProjectQualityContext(facts);
+    } catch {
+    }
+  }
+
+  return model;
 }
 
-function getIso25010Characteristic(characteristicId) {
+function getIso25010Characteristic(characteristicId, projectPath = null) {
   const char = iso25010Model.qualityCharacteristics.find(c => c.id === characteristicId);
   if (!char) {
     throw new Error(`Unknown characteristic: ${characteristicId}. Available: ${iso25010Model.qualityCharacteristics.map(c => c.id).join(', ')}`);
   }
-  return char;
+
+  const result = { ...char };
+
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      result.projectContext = getProjectQualityContext(facts);
+    } catch {
+    }
+  }
+
+  return result;
 }
 
-function getIso25010SubCharacteristic(characteristicId, subCharacteristicId) {
+function getIso25010SubCharacteristic(characteristicId, subCharacteristicId, projectPath = null) {
   const char = getIso25010Characteristic(characteristicId);
   const sub = char.subCharacteristics.find(s => s.id === subCharacteristicId);
   if (!sub) {
     throw new Error(`Unknown sub-characteristic: ${subCharacteristicId}. Available: ${char.subCharacteristics.map(s => s.id).join(', ')}`);
   }
-  return {
+  const result = {
     characteristic: char.id,
     ...sub
   };
+
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      result.projectContext = getProjectQualityContext(facts);
+    } catch {
+    }
+  }
+
+  return result;
+}
+
+function getProjectQualityContext(facts) {
+  const { stack, modules, tests } = facts;
+  const context = {};
+
+  if (stack.available) {
+    context.stack = {
+      framework: stack.framework.id,
+      bundler: stack.bundler.id,
+      css: stack.css.id,
+      runtime: stack.runtime.id
+    };
+  }
+
+  if (modules.available) {
+    context.modularity = {
+      moduleCount: modules.count,
+      modules: modules.modules.slice(0, 5).map(m => m.name)
+    };
+  }
+
+  if (tests.available) {
+    context.testability = {
+      testFramework: tests.framework,
+      coverage: tests.coverage,
+      hasTests: tests.hasTests
+    };
+  }
+
+  return context;
 }
 
 export { getIso25010Model, getIso25010Characteristic, getIso25010SubCharacteristic, iso25010Model };

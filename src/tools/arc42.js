@@ -1,3 +1,5 @@
+import { inspect } from '../lib/project-intelligence.js';
+
 const arc42Templates = {
   1: {
     title: "Introduction and Goals",
@@ -330,7 +332,7 @@ Maintainability
   }
 };
 
-function getArc42Section(sectionNumber, context = {}) {
+function getArc42Section(sectionNumber, context = {}, projectPath = null) {
   const section = arc42Templates[sectionNumber];
   if (!section) {
     throw new Error(`Invalid arc42 section: ${sectionNumber}. Valid range: 1-12`);
@@ -338,8 +340,17 @@ function getArc42Section(sectionNumber, context = {}) {
 
   let content = section.content;
 
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      content = personalizeSection(sectionNumber, content, facts);
+    } catch {
+    }
+  }
+
   if (context.projectName) {
-    content = content.replace(/\${projectName}/g, context.projectName);
+    content = content.replace(/\$\{projectName\}/g, context.projectName);
+    content = content.replace(/\$projectName\$/g, context.projectName);
   }
 
   return {
@@ -348,6 +359,259 @@ function getArc42Section(sectionNumber, context = {}) {
     content: content,
     template: `Section ${sectionNumber} of arc42 template`
   };
+}
+
+function personalizeSection(sectionNumber, content, facts) {
+  const { stack, modules, backend, adrs } = facts;
+
+  if (sectionNumber === 2 && stack.available) {
+    const techConstraints = buildTechConstraints(stack);
+    content = content.replace(
+      /\| Language.*?\|.*?\n/,
+      techConstraints + '\n'
+    );
+  }
+
+  if (sectionNumber === 4 && modules.available && modules.modules.length > 0) {
+    content = personalizeBuildingBlockView(content, modules, stack);
+  }
+
+  if (sectionNumber === 6 && stack.available) {
+    content = personalizeDeploymentView(content, stack);
+  }
+
+  if (sectionNumber === 8 && adrs.available && adrs.records.length > 0) {
+    content = personalizeADRs(content, adrs);
+  }
+
+  return content;
+}
+
+function buildTechConstraints(stack) {
+  const lines = [];
+  if (stack.framework.id !== 'unknown') {
+    lines.push(`| Framework | ${stack.framework.id} | Full-stack ${stack.language?.id || 'JS'} |`);
+  }
+  if (stack.bundler.id !== 'unknown') {
+    lines.push(`| Bundler | ${stack.bundler.id} | Build tooling |`);
+  }
+  if (stack.css.id !== 'unknown') {
+    lines.push(`| CSS | ${stack.css.id} | Styling solution |`);
+  }
+  if (stack.state.id !== 'none') {
+    lines.push(`| State | ${stack.state.id} | Client state management |`);
+  }
+  if (stack.runtime.id !== 'unknown') {
+    lines.push(`| Runtime | ${stack.runtime.id} | Backend/Edge |`);
+  }
+  if (lines.length === 0) {
+    return '';
+  }
+  return lines.join('\n');
+}
+
+function personalizeBuildingBlockView(content, modules, stack) {
+  const moduleList = modules.modules.map(m => {
+    return `| ${m.name} | ${m.kind} | ${m.fileCount} files |`;
+  }).join('\n');
+
+  const level1Diagram = buildLevel1Diagram(modules, stack);
+
+  content = content.replace(
+    /### Level 1: System Overview[\s\S]*?(?=### Black Box)/,
+    `### Level 1: System Overview\n\n${level1Diagram}\n\n### Core Modules (${modules.count})\n\n| Module | Type | Size |\n|--------|------|------|\n${moduleList}\n\n`
+  );
+
+  return content;
+}
+
+function buildLevel1Diagram(modules, stack) {
+  const clientPart = stack.framework.id === 'react' ? 'React SPA' :
+                     stack.framework.id === 'vue' ? 'Vue SPA' :
+                     stack.framework.id === 'next' ? 'Next.js' : 'Web App';
+
+  const backendPart = stack.runtime.id === 'supabase' ? 'Supabase BaaS' :
+                      stack.runtime.id === 'deno' ? 'Deno Edge' :
+                      stack.runtime.id === 'node' ? 'Node.js' : 'API';
+
+  return `\`\`\`
+┌─────────────────────────────────────────────────────────────┐
+│                        System                               │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐ │
+│  │ ${clientPart.padEnd(12)} │  │ ${backendPart.padEnd(12)} │  │ Edge Functions        │ │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+\`\`\``;
+}
+
+function personalizeDeploymentView(content, stack) {
+  const infra = stack.bundler.id === 'vercel' ? 'Vercel (frontend)' : 'Cloud Platform';
+
+  content = content.replace(
+    /- \*\*Cloud\*\*:.*?\n/,
+    `- **Cloud**: ${infra}\n`
+  );
+
+  content = content.replace(
+    /EKS Cluster[\s\S]*?S3 Bucket \(assets\)/,
+    stack.runtime.id === 'supabase' ?
+    `Supabase Cloud (PostgreSQL + Auth + Storage)\nElastiCache Redis\nVercel (frontend)` :
+    `Kubernetes Cluster\nPostgreSQL + Redis\nS3 Bucket (assets)`
+  );
+
+  return content;
+}
+
+function personalizeADRs(content, adrs) {
+  let adrSection = '\n### Detected ADRs\n\n';
+
+  for (const adr of adrs.records.slice(0, 5)) {
+    const title = adr.title || adr.file || 'ADR';
+    adrSection += `### ${title}\n\n`;
+    if (adr.decision) {
+      adrSection += `**Decision**: ${adr.decision}\n\n`;
+    }
+    if (adr.status) {
+      adrSection += `**Status**: ${adr.status}\n\n`;
+    }
+  }
+
+  content = content.replace(
+    /### ADR-003: JWT[\s\S]*?(?=\#\#\# Quality Requirements)/,
+    adrSection + '\n'
+  );
+
+  return content;
+}
+
+function getArc42Checklist(sectionNumber, projectPath = null) {
+  const section = arc42Templates[sectionNumber];
+  if (!section) {
+    throw new Error(`Invalid arc42 section: ${sectionNumber}. Valid range: 1-12`);
+  }
+
+  const checklistItems = getChecklistForSection(sectionNumber);
+
+  let status = {};
+  if (projectPath) {
+    try {
+      const facts = inspect(projectPath);
+      status = evaluateChecklist(sectionNumber, facts);
+    } catch {
+    }
+  }
+
+  return {
+    section: sectionNumber,
+    title: section.title,
+    items: checklistItems,
+    status
+  };
+}
+
+function getChecklistForSection(sectionNumber) {
+  const checklists = {
+    1: [
+      { id: '1.1', text: 'Purpose documented', required: true },
+      { id: '1.2', text: 'Stakeholders table populated', required: true },
+      { id: '1.3', text: 'Quality goals with metrics', required: true },
+      { id: '1.4', text: 'Acceptance criteria defined', required: false }
+    ],
+    2: [
+      { id: '2.1', text: 'Technical constraints listed', required: true },
+      { id: '2.2', text: 'Organizational constraints documented', required: true },
+      { id: '2.3', text: 'External constraints identified', required: false }
+    ],
+    3: [
+      { id: '3.1', text: 'Key architectural decisions documented', required: true },
+      { id: '3.2', text: 'Technical approach defined', required: true },
+      { id: '3.3', text: 'Quality strategy outlined', required: false }
+    ],
+    4: [
+      { id: '4.1', text: 'Level 1 context diagram present', required: true },
+      { id: '4.2', text: 'Core modules identified', required: true },
+      { id: '4.3', text: 'Component interfaces documented', required: false }
+    ],
+    5: [
+      { id: '5.1', text: 'Key runtime scenarios documented', required: true },
+      { id: '5.2', text: 'Sequence diagrams for critical flows', required: false }
+    ],
+    6: [
+      { id: '6.1', text: 'Deployment topology diagram', required: true },
+      { id: '6.2', text: 'Infrastructure components listed', required: true },
+      { id: '6.3', text: 'Scaling strategy defined', required: false }
+    ],
+    7: [
+      { id: '7.1', text: 'Domain concepts documented', required: true },
+      { id: '7.2', text: 'Architectural patterns identified', required: false },
+      { id: '7.3', text: 'Cross-cutting concerns addressed', required: false }
+    ],
+    8: [
+      { id: '8.1', text: 'ADRs recorded with context/decision/consequences', required: true },
+      { id: '8.2', text: 'Decision status documented', required: false }
+    ],
+    9: [
+      { id: '9.1', text: 'Quality tree defined', required: true },
+      { id: '9.2', text: 'Quality scenarios with triggers/responses', required: true },
+      { id: '9.3', text: 'SLOs defined', required: false }
+    ],
+    10: [
+      { id: '10.1', text: 'Risk register with mitigations', required: true },
+      { id: '10.2', text: 'Technical debt documented', required: false }
+    ],
+    11: [
+      { id: '11.1', text: 'Key terms defined', required: true },
+      { id: '11.2', text: 'Abbreviations listed', required: false }
+    ],
+    12: [
+      { id: '12.1', text: 'Supporting diagrams included', required: false },
+      { id: '12.2', text: 'References documented', required: false }
+    ]
+  };
+
+  return checklists[sectionNumber] || [];
+}
+
+function evaluateChecklist(sectionNumber, facts) {
+  const { stack, modules, backend, adrs } = facts;
+  const result = { complete: 0, total: 0, gaps: [] };
+
+  if (sectionNumber === 4) {
+    if (modules.available) {
+      result.complete++;
+    } else {
+      result.gaps.push('No module directory detected');
+    }
+    result.total++;
+    if (stack.available) {
+      result.complete++;
+    } else {
+      result.gaps.push('No package.json found');
+    }
+    result.total++;
+  }
+
+  if (sectionNumber === 8) {
+    if (adrs.available && adrs.records.length > 0) {
+      result.complete++;
+      result.details = `Detected ${adrs.records.length} ADRs`;
+    } else {
+      result.gaps.push('No ADR directory found');
+    }
+    result.total++;
+  }
+
+  if (sectionNumber === 2) {
+    if (stack.available) {
+      result.complete++;
+      result.details = `Stack: ${stack.framework.id}, ${stack.runtime.id}`;
+    } else {
+      result.gaps.push('No package.json found');
+    }
+    result.total++;
+  }
+
+  return result;
 }
 
 function getArc42Metadata() {
@@ -360,4 +624,4 @@ function getArc42Metadata() {
   };
 }
 
-export { getArc42Section, getArc42Metadata, arc42Templates };
+export { getArc42Section, getArc42Metadata, getArc42Checklist, arc42Templates };
