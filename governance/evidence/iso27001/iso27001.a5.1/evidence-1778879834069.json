@@ -1,0 +1,32 @@
+{
+  "id": "evidence-1778879834069",
+  "ruleId": "iso27001.a5.1",
+  "standard": "iso27001",
+  "generatedAt": "2026-05-15T21:17:14.033Z",
+  "commitSha": "7b52e65bd2b7fe9a3335f46102ee46651f73da86",
+  "artifacts": [
+    {
+      "type": "document",
+      "description": "Documentation evidence",
+      "status": "pass",
+      "detail": "Documentation generated",
+      "content": "# Evidence Document: iso27001.a5.1\n\n## Rule Information\n- **Standard:** iso27001\n- **Title:** A.5.1 - Organizational Controls\n- **Severity:** warning\n\n## Description\nISO 27001 control A.5.1 (Organizational Controls)\n\n## Implementation\n{\n  \"patterns\": [],\n  \"antiPatterns\": [],\n  \"codeExamples\": [],\n  \"tokens\": []\n}\n\n## Validation\n{\n  \"automated\": false,\n  \"manual\": true,\n  \"lint\": false\n}\n"
+    },
+    {
+      "type": "audit",
+      "description": "Audit evidence artifact",
+      "status": "pass",
+      "detail": "Audit artifact generated",
+      "auditInfo": {
+        "ruleId": "iso27001.a5.1",
+        "standard": "iso27001",
+        "auditor": "SAGE-MCP",
+        "date": "2026-05-15T21:17:14.069Z",
+        "findings": []
+      }
+    }
+  ],
+  "status": "generated",
+  "evidencePath": "D:\\workspace\\gesta\\design-system\\standards-mcp\\governance\\evidence\\iso27001\\iso27001.a5.1\\evidence-1778879834069.json",
+  "projectPath": "D:\\workspace\\gesta\\design-system\\standards-mcp"
+}

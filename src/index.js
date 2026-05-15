@@ -291,17 +291,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 async function initializeGraph() {
-  try {
-    const files = discoverRuleFiles(standardsDir);
-    if (files.length > 0) {
-      await indexRules(standardsDir);
+  // Index in background after transport is ready
+  setImmediate(async () => {
+    try {
+      const files = discoverRuleFiles(standardsDir);
+      if (files.length > 0) {
+        await indexRules(standardsDir);
+      }
+    } catch (e) {
+      console.error('Warning: Could not initialize graph:', e.message);
     }
-  } catch (e) {
-    console.error('Warning: Could not initialize graph:', e.message);
-  }
+  });
 }
 
 const transport = new StdioServerTransport();
-server.connect(transport).then(() => {
-  initializeGraph().catch(console.error);
-});
+server.connect(transport);
