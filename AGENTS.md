@@ -58,8 +58,9 @@ node src/index.js
   "mcp": {
     "sage": {
       "type": "local",
-      "command": ["node", "src/index.js"],
-      "cwd": "path/to/sage-mcp"
+      "command": ["npx", "-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
+      "enabled": true,
+      "timeout": 30000
     }
   }
 }

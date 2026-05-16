@@ -144,7 +144,10 @@ Then configure:
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "sage": {
-      "command": ["npx", "-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"]
+      "type": "local",
+      "command": ["npx", "-y", "git+https://github.com/xaledro/sage-mcp.git#v3.0.0"],
+      "enabled": true,
+      "timeout": 30000
     }
   }
 }
