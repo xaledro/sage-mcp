@@ -28,8 +28,6 @@ async function indexRules(standardsDir, dbPath) {
     return { indexed: currentCount, errors: 0 };
   }
 
-  console.error(`Indexing ${files.length} rule files...`);
-
   let errors = 0;
   let indexed = 0;
 
@@ -40,21 +38,17 @@ async function indexRules(standardsDir, dbPath) {
         graph.insertRule(result.rule);
         indexed++;
       } catch (e) {
-        console.error(`Error inserting ${file}: ${e.message}`);
         errors++;
       }
     } else {
-      console.error(`Invalid rule ${file}: ${result.error}`);
       errors++;
     }
   }
   graph.close();
-  console.error(`Indexed ${indexed} rules with ${errors} errors`);
   return { indexed, errors };
 }
 
 async function rebuildGraph(standardsDir, dbPath) {
-  console.error('Forcing full rebuild of knowledge graph...');
   const graph = await createGraphDb(dbPath);
   graph.clearAll();
 

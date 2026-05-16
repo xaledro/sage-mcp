@@ -319,7 +319,7 @@ async function ensureGraphInitialized() {
       }
       graphInitialized = true;
     } catch (e) {
-      console.error('Warning: Could not initialize graph:', e.message);
+      // Silent failure - graph will initialize on first use
     } finally {
       initPromise = null;
     }
