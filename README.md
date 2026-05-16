@@ -13,13 +13,13 @@ SAGE is an MCP server (stdio transport) providing **12 canonical tools** for gov
 
 ## Installation
 
-### Option 1: Via git URL (recommended - no install needed)
+### Option 1: Via git URL (recommended)
 
 ```bash
 npx -y git+https://github.com/xaledro/sage-mcp.git#v3.0.0
 ```
 
-Works with all MCP clients. Downloads and runs the latest tagged version.
+This downloads the package, installs dependencies, and runs the server via stdio. Works with all MCP clients when configured with `type: "local"`.
 
 ### Option 2: Via npm
 
